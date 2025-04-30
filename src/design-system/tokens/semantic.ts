@@ -663,6 +663,62 @@ export const semanticTokens = {
       dark: primitiveTokens.colors['lemon-950'],
       default: primitiveTokens.colors['lemon-25'],
     },
+    'utility-lemon-50': {
+      light: primitiveTokens.colors['lemon-50'],
+      dark: primitiveTokens.colors['lemon-900'],
+      default: primitiveTokens.colors['lemon-50'],
+    },
+    'utility-lemon-100': {
+      light: primitiveTokens.colors['lemon-100'],
+      dark: primitiveTokens.colors['lemon-800'],
+      default: primitiveTokens.colors['lemon-100'],
+    },
+    'utility-lemon-200': {
+      light: primitiveTokens.colors['lemon-200'],
+      dark: primitiveTokens.colors['lemon-700'],
+      default: primitiveTokens.colors['lemon-200'],
+    }, 
+    'utility-lemon-300': {
+      light: primitiveTokens.colors['lemon-300'],
+      dark: primitiveTokens.colors['lemon-600'],
+      default: primitiveTokens.colors['lemon-300'],
+    },
+    'utility-lemon-400': {
+      light: primitiveTokens.colors['lemon-400'],
+      dark: primitiveTokens.colors['lemon-500'],
+      default: primitiveTokens.colors['lemon-400'],
+    },
+    'utility-lemon-500': {
+      light: primitiveTokens.colors['lemon-500'],
+      dark: primitiveTokens.colors['lemon-400'],
+      default: primitiveTokens.colors['lemon-500'],
+    },
+    'utility-lemon-600': {
+      light: primitiveTokens.colors['lemon-600'], 
+      dark: primitiveTokens.colors['lemon-300'],
+      default: primitiveTokens.colors['lemon-600'],
+    },
+    'utility-lemon-700': {
+      light: primitiveTokens.colors['lemon-700'],
+      dark: primitiveTokens.colors['lemon-200'],
+      default: primitiveTokens.colors['lemon-700'],
+    },
+    'utility-lemon-800': {
+      light: primitiveTokens.colors['lemon-800'],
+      dark: primitiveTokens.colors['lemon-100'],
+      default: primitiveTokens.colors['lemon-800'],
+    },
+    'utility-lemon-900': {
+      light: primitiveTokens.colors['lemon-900'],
+      dark: primitiveTokens.colors['lemon-50'],
+      default: primitiveTokens.colors['lemon-900'],
+    },
+    'utility-lemon-950': {
+      light: primitiveTokens.colors['lemon-950'],
+      dark: primitiveTokens.colors['lemon-25'],
+      default: primitiveTokens.colors['lemon-950'],
+    },
+    
     // ... (similar pattern for lemon-50 through lemon-950)
 
     // Utility colors - Violet
@@ -977,6 +1033,7 @@ export const semanticTokens = {
       dark: primitiveTokens.colors['orange-25'],
       default: primitiveTokens.colors['orange-950'],
     },
+    
 
 
     

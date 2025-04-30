@@ -35,7 +35,7 @@ function App() {
       <div className="min-h-screen bg-background-primary">
         <div className="flex">
           <Sidebar activeDemo={activeDemo} onDemoChange={setActiveDemo} />
-          <div className="flex-1">
+          <div className="flex-1 ml-64">
             <nav className="p-4 bg-background-secondary border-b border-border-primary flex justify-between items-center">
               <h1 className="text-heading-lg text-text-primary">Aurora Design System</h1>
               <DarkModeSwitcher />

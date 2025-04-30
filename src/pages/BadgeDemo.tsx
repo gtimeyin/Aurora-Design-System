@@ -154,6 +154,109 @@ export const BadgeDemo: React.FC = () => {
             </div>
           </div>
         </section>
+
+        {/* Additional Color Variants */}
+        <section className="mb-8">
+          <h2 className="text-2xl font-semibold mb-4">Additional Color Variants</h2>
+          <div className="space-y-6">
+            {/* Modern Style */}
+            <div>
+              <h3 className="text-lg font-medium mb-3">Modern Style</h3>
+              <div className="flex flex-wrap gap-4">
+                <Badge style="modern" variant="fuchsia">Fuchsia</Badge>
+                <Badge style="modern" variant="bumblebee">Bumblebee</Badge>
+                <Badge style="modern" variant="pink">Pink</Badge>
+                <Badge style="modern" variant="violet">Violet</Badge>
+                <Badge style="modern" variant="aqua">Aqua</Badge>
+                <Badge style="modern" variant="lemon">Lemon</Badge>
+                <Badge style="modern" variant="blue">Blue</Badge>
+                <Badge style="modern" variant="sky">Sky</Badge>
+              </div>
+            </div>
+            
+            {/* Solid Style */}
+            <div>
+              <h3 className="text-lg font-medium mb-3">Solid Style</h3>
+              <div className="flex flex-wrap gap-4">
+                <Badge style="solid" variant="fuchsia">Fuchsia</Badge>
+                <Badge style="solid" variant="bumblebee">Bumblebee</Badge>
+                <Badge style="solid" variant="pink">Pink</Badge>
+                <Badge style="solid" variant="violet">Violet</Badge>
+                <Badge style="solid" variant="aqua">Aqua</Badge>
+                <Badge style="solid" variant="lemon">Lemon</Badge>
+                <Badge style="solid" variant="blue">Blue</Badge>
+                <Badge style="solid" variant="sky">Sky</Badge>
+              </div>
+            </div>
+            
+            {/* Outline Style */}
+            <div>
+              <h3 className="text-lg font-medium mb-3">Outline Style</h3>
+              <div className="flex flex-wrap gap-4">
+                <Badge style="outline" variant="fuchsia">Fuchsia</Badge>
+                <Badge style="outline" variant="bumblebee">Bumblebee</Badge>
+                <Badge style="outline" variant="pink">Pink</Badge>
+                <Badge style="outline" variant="violet">Violet</Badge>
+                <Badge style="outline" variant="aqua">Aqua</Badge>
+                <Badge style="outline" variant="lemon">Lemon</Badge>
+                <Badge style="outline" variant="blue">Blue</Badge>
+                <Badge style="outline" variant="sky">Sky</Badge>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Data Visualization Example */}
+        <section className="mb-8">
+          <h2 className="text-2xl font-semibold mb-4">Data Visualization Example</h2>
+          <div className="p-6 border border-border-primary rounded-lg">
+            <h3 className="text-lg font-medium mb-4">Sales by Category</h3>
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <Badge style="solid" variant="primary">Technology</Badge>
+                  <span>Products</span>
+                </div>
+                <span className="font-semibold">$45,245</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <Badge style="solid" variant="fuchsia">Fashion</Badge>
+                  <span>Products</span>
+                </div>
+                <span className="font-semibold">$35,750</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <Badge style="solid" variant="bumblebee">Food</Badge>
+                  <span>Products</span>
+                </div>
+                <span className="font-semibold">$28,320</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <Badge style="solid" variant="pink">Beauty</Badge>
+                  <span>Products</span>
+                </div>
+                <span className="font-semibold">$22,700</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <Badge style="solid" variant="violet">Home</Badge>
+                  <span>Products</span>
+                </div>
+                <span className="font-semibold">$18,450</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <Badge style="solid" variant="aqua">Sports</Badge>
+                  <span>Products</span>
+                </div>
+                <span className="font-semibold">$12,800</span>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   );

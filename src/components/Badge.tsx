@@ -2,7 +2,21 @@ import React from 'react';
 import { IconProps } from '@phosphor-icons/react';
 
 export type BadgeStyle = 'modern' | 'modern-no-outline' | 'solid' | 'outline';
-export type BadgeVariant = 'primary' | 'secondary' | 'success' | 'warning' | 'error' | 'info';
+export type BadgeVariant = 
+  | 'primary' 
+  | 'secondary' 
+  | 'success' 
+  | 'warning' 
+  | 'error' 
+  | 'info'
+  | 'fuchsia'
+  | 'bumblebee'
+  | 'pink'
+  | 'violet'
+  | 'aqua'
+  | 'lemon'
+  | 'blue'
+  | 'sky';
 export type BadgeSize = 'sm' | 'md' | 'lg';
 export type BadgeType = 'default' | 'left-icon' | 'right-icon' | 'indicator';
 

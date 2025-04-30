@@ -21,7 +21,7 @@ interface SidebarProps {
 
 export const Sidebar: React.FC<SidebarProps> = ({ activeDemo, onDemoChange }) => {
   return (
-    <nav className="w-64 h-screen bg-background-secondary border-r border-border-primary p-4">
+    <nav className="w-64 h-screen bg-background-secondary border-r border-border-primary p-4 fixed left-0 top-0 overflow-y-auto">
       <div className="space-y-2">
         {demos.map((demo) => (
           <button

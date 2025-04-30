@@ -450,7 +450,7 @@ const getComponentTokens = (mode: ThemeMode) => ({
         '&.badge-modern': {
           color: getColorValue(semanticTokens.colors['utility-fuchsia-700'], mode),
           backgroundColor: getColorValue(semanticTokens.colors['utility-fuchsia-50'], mode),
-          borderColor: getColorValue(semanticTokens.colors['utility-fuchsia-200'], mode),
+          borderColor: getColorValue(semanticTokens.colors['utility-fuchsia-400'], mode),
         },
         '&.badge-modern-no-outline': {
           color: getColorValue(semanticTokens.colors['utility-fuchsia-700'], mode),
@@ -462,26 +462,26 @@ const getComponentTokens = (mode: ThemeMode) => ({
         },
         '&.badge-outline': {
           color: getColorValue(semanticTokens.colors['utility-fuchsia-700'], mode),
-          borderColor: getColorValue(semanticTokens.colors['utility-fuchsia-200'], mode),
+          borderColor: getColorValue(semanticTokens.colors['utility-fuchsia-400'], mode),
         },
       },
       bumblebee: {
         '&.badge-modern': {
-          color: getColorValue(semanticTokens.colors['utility-bumblebee-700'], mode),
+          color: getColorValue(semanticTokens.colors['utility-bumblebee-800'], mode),
           backgroundColor: getColorValue(semanticTokens.colors['utility-bumblebee-50'], mode),
-          borderColor: getColorValue(semanticTokens.colors['utility-bumblebee-200'], mode),
+          borderColor: getColorValue(semanticTokens.colors['utility-bumblebee-500'], mode),
         },
         '&.badge-modern-no-outline': {
-          color: getColorValue(semanticTokens.colors['utility-bumblebee-700'], mode),
+          color: getColorValue(semanticTokens.colors['utility-bumblebee-800'], mode),
           backgroundColor: getColorValue(semanticTokens.colors['utility-bumblebee-50'], mode),
         },
         '&.badge-solid': {
           backgroundColor: getColorValue(semanticTokens.colors['utility-bumblebee-500'], mode),
-          color: getColorValue(semanticTokens.colors['text-inverse-primary'], mode),
+          color: getColorValue(semanticTokens.colors['text-primary'], mode),
         },
         '&.badge-outline': {
-          color: getColorValue(semanticTokens.colors['utility-bumblebee-700'], mode),
-          borderColor: getColorValue(semanticTokens.colors['utility-bumblebee-200'], mode),
+          color: getColorValue(semanticTokens.colors['utility-bumblebee-800'], mode),
+          borderColor: getColorValue(semanticTokens.colors['utility-bumblebee-500'], mode),
         },
       },
       pink: {
@@ -520,6 +520,82 @@ const getComponentTokens = (mode: ThemeMode) => ({
         '&.badge-outline': {
           color: getColorValue(semanticTokens.colors['utility-violet-700'], mode),
           borderColor: getColorValue(semanticTokens.colors['utility-violet-200'], mode),
+        },
+      },
+      aqua: {
+        '&.badge-modern': {
+          color: getColorValue(semanticTokens.colors['utility-aqua-700'], mode),
+          backgroundColor: getColorValue(semanticTokens.colors['utility-aqua-50'], mode),
+          borderColor: getColorValue(semanticTokens.colors['utility-aqua-200'], mode),
+        },
+        '&.badge-modern-no-outline': {
+          color: getColorValue(semanticTokens.colors['utility-aqua-700'], mode),
+          backgroundColor: getColorValue(semanticTokens.colors['utility-aqua-50'], mode),
+        },
+        '&.badge-solid': {
+          backgroundColor: getColorValue(semanticTokens.colors['utility-aqua-500'], mode),
+          color: getColorValue(semanticTokens.colors['text-inverse-primary'], mode),
+        },
+        '&.badge-outline': {
+          color: getColorValue(semanticTokens.colors['utility-aqua-700'], mode),
+          borderColor: getColorValue(semanticTokens.colors['utility-aqua-200'], mode),
+        },
+      },
+      lemon: {
+        '&.badge-modern': {
+          color: getColorValue(semanticTokens.colors['utility-lemon-700'], mode),
+          backgroundColor: getColorValue(semanticTokens.colors['utility-lemon-50'], mode),
+          borderColor: getColorValue(semanticTokens.colors['utility-lemon-300'], mode),
+        },
+        '&.badge-modern-no-outline': {
+          color: getColorValue(semanticTokens.colors['utility-lemon-700'], mode),
+          backgroundColor: getColorValue(semanticTokens.colors['utility-lemon-50'], mode),
+        },
+        '&.badge-solid': {
+          backgroundColor: getColorValue(semanticTokens.colors['utility-lemon-500'], mode),
+          color: getColorValue(semanticTokens.colors['text-inverse-primary'], mode),
+        },
+        '&.badge-outline': {
+          color: getColorValue(semanticTokens.colors['utility-lemon-700'], mode),
+          borderColor: getColorValue(semanticTokens.colors['utility-lemon-300'], mode),
+        },
+      },
+      blue: {
+        '&.badge-modern': {
+          color: getColorValue(semanticTokens.colors['utility-blue-700'], mode),
+          backgroundColor: getColorValue(semanticTokens.colors['utility-blue-50'], mode),
+          borderColor: getColorValue(semanticTokens.colors['utility-blue-200'], mode),
+        },
+        '&.badge-modern-no-outline': {
+          color: getColorValue(semanticTokens.colors['utility-blue-700'], mode),
+          backgroundColor: getColorValue(semanticTokens.colors['utility-blue-50'], mode),
+        },
+        '&.badge-solid': {
+          backgroundColor: getColorValue(semanticTokens.colors['utility-blue-500'], mode),
+          color: getColorValue(semanticTokens.colors['text-inverse-primary'], mode),
+        },
+        '&.badge-outline': {
+          color: getColorValue(semanticTokens.colors['utility-blue-700'], mode),
+          borderColor: getColorValue(semanticTokens.colors['utility-blue-200'], mode),
+        },
+      },
+      sky: {
+        '&.badge-modern': {
+          color: getColorValue(semanticTokens.colors['utility-sky-700'], mode),
+          backgroundColor: getColorValue(semanticTokens.colors['utility-sky-50'], mode),
+          borderColor: getColorValue(semanticTokens.colors['utility-sky-200'], mode),
+        },
+        '&.badge-modern-no-outline': {
+          color: getColorValue(semanticTokens.colors['utility-sky-700'], mode),
+          backgroundColor: getColorValue(semanticTokens.colors['utility-sky-50'], mode),
+        },
+        '&.badge-solid': {
+          backgroundColor: getColorValue(semanticTokens.colors['utility-sky-500'], mode),
+          color: getColorValue(semanticTokens.colors['text-inverse-primary'], mode),
+        },
+        '&.badge-outline': {
+          color: getColorValue(semanticTokens.colors['utility-sky-700'], mode),
+          borderColor: getColorValue(semanticTokens.colors['utility-sky-200'], mode),
         },
       },
     },
