@@ -629,6 +629,7 @@ module.exports = {
           // Border colors
           '.border-border-primary': { borderColor: getColorValue(semanticTokens.colors['border-primary'], 'dark') },
           '.border-border-secondary': { borderColor: getColorValue(semanticTokens.colors['border-secondary'], 'dark') },
+          '.border-border-tertiary': { borderColor: getColorValue(semanticTokens.colors['border-tertiary'], 'dark') },
           '.border-border-focus': { borderColor: getColorValue(semanticTokens.colors['border-focus'], 'dark') },
           
           // Interactive colors
