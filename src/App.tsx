@@ -7,6 +7,16 @@ import { LayoutDemo } from './pages/LayoutDemo';
 import { DarkModeSwitcher } from './components/DarkModeSwitcher';
 import { Sidebar } from './components/Sidebar';
 import { ThemeProvider } from './design-system/ThemeContext';
+import { TableDemo } from './pages/TableDemo';
+import { ToggleDemo } from './pages/ToggleDemo';
+import { TagDemo } from './pages/TagDemo';
+import { DropdownDemo } from './pages/DropdownDemo';
+import { InputDemo } from './pages/InputDemo';
+import { TooltipPopoverDemo } from './pages/TooltipPopoverDemo';
+import { DatePickerDemo } from './pages/DatePickerDemo';
+import { TabsDemo } from './pages/TabsDemo';
+import { ButtonGroupDemo } from './pages/ButtonGroupDemo';
+import { BentoBoxDemo } from './pages/BentoBoxDemo';
 
 function App() {
   const [activeDemo, setActiveDemo] = useState('overview');
@@ -25,6 +35,26 @@ function App() {
         return <CheckboxDemo />;
       case 'layout':
         return <LayoutDemo />;
+      case 'table':
+        return <TableDemo />;
+      case 'toggle':
+        return <ToggleDemo />;
+      case 'tag':
+        return <TagDemo />;
+      case 'dropdown':
+        return <DropdownDemo />;
+      case 'input':
+        return <InputDemo />;
+      case 'tooltip-popover':
+        return <TooltipPopoverDemo />;
+      case 'datepicker':
+        return <DatePickerDemo />;
+      case 'tabs':
+        return <TabsDemo />;
+      case 'button-group':
+        return <ButtonGroupDemo />;
+      case 'bento-box':
+        return <BentoBoxDemo />;
       default:
         return <div>Demo not found</div>;
     }

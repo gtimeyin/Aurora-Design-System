@@ -9,9 +9,19 @@ const demos: Demo[] = [
   { id: 'overview', label: 'Overview' },
   { id: 'badge', label: 'Badge' },
   { id: 'button', label: 'Button' },
+  { id: 'button-group', label: 'Button Group' },
   { id: 'typography', label: 'Typography' },
   { id: 'checkbox', label: 'Checkbox' },
   { id: 'layout', label: 'Layout' },
+  { id: 'table', label: 'Table' },
+  { id: 'toggle', label: 'Toggle' },
+  { id: 'tag', label: 'Tag' },
+  { id: 'dropdown', label: 'Dropdown' },
+  { id: 'input', label: 'Input' },
+  { id: 'tooltip-popover', label: 'Tooltip & Popover' },
+  { id: 'datepicker', label: 'Date Picker' },
+  { id: 'tabs', label: 'Tabs' },
+  { id: 'bento-box', label: 'Bento Box' },
 ];
 
 interface SidebarProps {

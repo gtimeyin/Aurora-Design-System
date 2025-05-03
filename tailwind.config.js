@@ -8,6 +8,21 @@ module.exports = {
   content: [
     './src/**/*.{js,jsx,ts,tsx}',
   ],
+  safelist: [
+    'grid-cols-12',
+    'col-span-4',
+    'col-span-8',
+    'col-span-12',
+    'md:col-span-4',
+    'md:col-span-8',
+    'md:col-span-12',
+    'lg:col-span-4',
+    'lg:col-span-8',
+    'lg:col-span-12',
+    'xl:col-span-4',
+    'xl:col-span-8',
+    'xl:col-span-12',
+  ],
   darkMode: 'class',
   theme: {
     extend: {
@@ -199,10 +214,6 @@ module.exports = {
           gap: '8px',
           cursor: 'pointer',
           userSelect: 'none',
-          '&:disabled': {
-            cursor: 'not-allowed',
-            opacity: 0.5,
-          },
           '.checkbox-input-wrapper': {
             position: 'relative',
             display: 'inline-flex',
@@ -212,12 +223,340 @@ module.exports = {
           '.checkbox-input': {
             appearance: 'none',
             border: `1px solid ${getColorValue(semanticTokens.colors['border-primary'], 'light')}`,
-            borderRadius: semanticTokens.borderRadius['radius-xxs'],
             backgroundColor: getColorValue(semanticTokens.colors['background-primary'], 'light'),
             transition: 'all 0.2s ease-in-out',
+            
+            // Default checkbox styles
+            '&:not(.checkbox-radio)': {
+              borderRadius: semanticTokens.borderRadius['radius-xxs'],
+            },
+            
+            // Radio specific styles
+            '&.checkbox-radio': {
+              borderRadius: '50%',
+            },
+            
+            // Sizes for both checkbox and radio
+            '&.checkbox-sm': {
+              width: '16px',
+              height: '16px',
+            },
+            '&.checkbox-md': {
+              width: '20px',
+              height: '20px',
+            },
+            
+            // Checked state for both
             '&:checked': {
               backgroundColor: getColorValue(semanticTokens.colors['interactive-primary'], 'light'),
+              borderColor: getColorValue(semanticTokens.colors['interactive-primary'], 'light'),
             },
+            
+            // Indeterminate state (checkbox only)
+            '&:not(.checkbox-radio):indeterminate': {
+              backgroundColor: getColorValue(semanticTokens.colors['interactive-primary'], 'light'),
+              borderColor: getColorValue(semanticTokens.colors['interactive-primary'], 'light'),
+            },
+            
+            '&:focus': {
+              outline: 'none',
+              boxShadow: `0 0 0 2px ${getColorValue(semanticTokens.colors['interactive-tertiary'], 'light')}40`,
+            },
+            '&:hover:not(:disabled)': {
+              borderColor: getColorValue(semanticTokens.colors['interactive-primary'], 'light'),
+            },
+          },
+          
+          // Icon styles for checkbox
+          '.checkbox-icon': {
+            position: 'absolute',
+            pointerEvents: 'none',
+            color: getColorValue(semanticTokens.colors['text-inverse-primary'], 'light'),
+            opacity: '0',
+            transition: 'opacity 0.15s ease-in-out',
+            transform: 'translate(-50%, -50%)',
+            top: '50%',
+            left: '50%',
+          },
+          
+          // Icon styles for radio
+          '.radio-icon': {
+            position: 'absolute',
+            pointerEvents: 'none',
+            color: getColorValue(semanticTokens.colors['text-inverse-primary'], 'light'),
+            opacity: '0',
+            transition: 'opacity 0.15s ease-in-out',
+            transform: 'translate(-50%, -50%)',
+            top: '50%',
+            left: '50%',
+          },
+          
+          // Show checkbox icon when checked or indeterminate
+          'input:checked ~ .checkbox-icon, input:indeterminate ~ .checkbox-icon.indeterminate': {
+            opacity: '1',
+          },
+          
+          // Show radio icon when checked
+          'input:checked ~ .radio-icon': {
+            opacity: '1',
+          },
+          
+          // Hide check icon when showing indeterminate icon
+          'input:indeterminate ~ .checkbox-icon:not(.indeterminate)': {
+            opacity: '0',
+          },
+          
+          '.checkbox-label': {
+            color: getColorValue(semanticTokens.colors['text-primary'], 'light'),
+            fontSize: semanticTokens.typography['label-sm'].fontSize,
+            lineHeight: semanticTokens.typography['label-sm'].lineHeight,
+            '&.checkbox-sm': {
+              fontSize: semanticTokens.typography['label-xs'].fontSize,
+              lineHeight: semanticTokens.typography['label-xs'].lineHeight,
+            },
+          },
+          
+          // Disabled states
+          '&:disabled, &[disabled], &:has(input:disabled)': {
+            cursor: 'not-allowed',
+            opacity: 0.5,
+            '.checkbox-label': {
+              color: getColorValue(semanticTokens.colors['text-disabled'], 'light'),
+            },
+          },
+        },
+        // Toggle styles
+        '.toggle': {
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '8px',
+          cursor: 'pointer',
+          userSelect: 'none',
+
+          '.toggle-input-wrapper': {
+            position: 'relative',
+            display: 'inline-flex',
+            alignItems: 'center',
+          },
+
+          '.toggle-input': {
+            position: 'absolute',
+            width: '1px',
+            height: '1px',
+            padding: '0',
+            margin: '-1px',
+            overflow: 'hidden',
+            clip: 'rect(0, 0, 0, 0)',
+            whiteSpace: 'nowrap',
+            border: '0',
+          },
+
+          '.toggle-track': {
+            position: 'relative',
+            backgroundColor: getColorValue(semanticTokens.colors['background-tertiary'], 'light'),
+            transition: 'all 0.2s ease-in-out',
+
+            '&.toggle-sm': {
+              width: '32px',
+              height: '16px',
+              borderRadius: '8px',
+            },
+            '&.toggle-md': {
+              width: '40px',
+              height: '20px',
+              borderRadius: '10px',
+            },
+            '&.toggle-lg': {
+              width: '48px',
+              height: '24px',
+              borderRadius: '12px',
+            },
+          },
+
+          '.toggle-thumb': {
+            position: 'absolute',
+            backgroundColor: getColorValue(semanticTokens.colors['background-primary'], 'light'),
+            boxShadow: semanticTokens.shadows['shadow-sm'],
+            transition: 'transform 0.2s ease-in-out',
+
+            '&.toggle-sm': {
+              width: '12px',
+              height: '12px',
+              borderRadius: '6px',
+              top: '2px',
+              left: '2px',
+            },
+            '&.toggle-md': {
+              width: '16px',
+              height: '16px',
+              borderRadius: '8px',
+              top: '2px',
+              left: '2px',
+            },
+            '&.toggle-lg': {
+              width: '20px',
+              height: '20px',
+              borderRadius: '10px',
+              top: '2px',
+              left: '2px',
+            },
+          },
+
+          // Checked state
+          'input:checked ~ .toggle-track': {
+            backgroundColor: getColorValue(semanticTokens.colors['interactive-primary'], 'light'),
+          },
+
+          'input:checked ~ .toggle-track .toggle-thumb': {
+            '&.toggle-sm': {
+              transform: 'translateX(16px)',
+            },
+            '&.toggle-md': {
+              transform: 'translateX(20px)',
+            },
+            '&.toggle-lg': {
+              transform: 'translateX(24px)',
+            },
+          },
+
+          // Focus state
+          'input:focus ~ .toggle-track': {
+            boxShadow: `0 0 0 2px ${getColorValue(semanticTokens.colors['interactive-tertiary'], 'light')}40`,
+          },
+
+          // Hover state
+          '&:hover:not(.disabled) .toggle-track': {
+            backgroundColor: getColorValue(semanticTokens.colors['background-hover'], 'light'),
+          },
+
+          '&:hover:not(.disabled) input:checked ~ .toggle-track': {
+            backgroundColor: getColorValue(semanticTokens.colors['interactive-hover'], 'light'),
+          },
+
+          // Disabled state
+          '&.disabled': {
+            cursor: 'not-allowed',
+            opacity: 0.5,
+          },
+
+          // Label styles
+          '.toggle-label': {
+            color: getColorValue(semanticTokens.colors['text-primary'], 'light'),
+            '&.toggle-sm': {
+              fontSize: semanticTokens.typography['label-xs'].fontSize,
+              lineHeight: semanticTokens.typography['label-xs'].lineHeight,
+            },
+            '&.toggle-md': {
+              fontSize: semanticTokens.typography['label-sm'].fontSize,
+              lineHeight: semanticTokens.typography['label-sm'].lineHeight,
+            },
+            '&.toggle-lg': {
+              fontSize: semanticTokens.typography['label-base'].fontSize,
+              lineHeight: semanticTokens.typography['label-base'].lineHeight,
+            },
+          },
+        },
+        // Add tag styles
+        '.tag': {
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '4px',
+          borderRadius: semanticTokens.borderRadius['radius-sm'],
+          fontWeight: semanticTokens.typography['label-sm'].fontWeight,
+          transition: 'all 0.2s ease-in-out',
+          whiteSpace: 'nowrap',
+
+          // Size variants
+          '&.tag-sm': {
+            padding: '2px 6px',
+            fontSize: semanticTokens.typography['label-xs'].fontSize,
+            lineHeight: semanticTokens.typography['label-xs'].lineHeight,
+          },
+          '&.tag-md': {
+            padding: '2px 8px',
+            fontSize: semanticTokens.typography['label-sm'].fontSize,
+            lineHeight: semanticTokens.typography['label-sm'].lineHeight,
+          },
+          '&.tag-lg': {
+            padding: '4px 12px',
+            fontSize: semanticTokens.typography['label-base'].fontSize,
+            lineHeight: semanticTokens.typography['label-base'].lineHeight,
+          },
+
+          // Remove button
+          '.tag-remove-button': {
+            display: 'inline-flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '2px',
+            marginLeft: '2px',
+            borderRadius: semanticTokens.borderRadius['radius-sm'],
+            color: 'inherit',
+            opacity: 0.7,
+            cursor: 'pointer',
+            transition: 'opacity 0.2s ease-in-out',
+
+            '&:hover': {
+              opacity: 1,
+            },
+          },
+
+          // Color variants - Light mode
+          '&.tag-primary': {
+            backgroundColor: `${getColorValue(semanticTokens.colors['interactive-primary'], 'light')}15`,
+            color: getColorValue(semanticTokens.colors['interactive-primary'], 'light'),
+          },
+          '&.tag-secondary': {
+            backgroundColor: `${getColorValue(semanticTokens.colors['interactive-secondary'], 'light')}15`,
+            color: getColorValue(semanticTokens.colors['interactive-secondary'], 'light'),
+          },
+          '&.tag-success': {
+            backgroundColor: `${getColorValue(semanticTokens.colors['status-success'], 'light')}15`,
+            color: getColorValue(semanticTokens.colors['status-success'], 'light'),
+          },
+          '&.tag-warning': {
+            backgroundColor: `${getColorValue(semanticTokens.colors['status-warning'], 'light')}15`,
+            color: getColorValue(semanticTokens.colors['status-warning'], 'light'),
+          },
+          '&.tag-error': {
+            backgroundColor: `${getColorValue(semanticTokens.colors['status-error'], 'light')}15`,
+            color: getColorValue(semanticTokens.colors['status-error'], 'light'),
+          },
+          '&.tag-info': {
+            backgroundColor: `${getColorValue(semanticTokens.colors['status-info'], 'light')}15`,
+            color: getColorValue(semanticTokens.colors['status-info'], 'light'),
+          },
+          '&.tag-fuchsia': {
+            backgroundColor: `${getColorValue(semanticTokens.colors['accent-fuchsia'], 'light')}15`,
+            color: getColorValue(semanticTokens.colors['accent-fuchsia'], 'light'),
+          },
+          '&.tag-bumblebee': {
+            backgroundColor: `${getColorValue(semanticTokens.colors['accent-bumblebee'], 'light')}15`,
+            color: getColorValue(semanticTokens.colors['accent-bumblebee'], 'light'),
+          },
+          '&.tag-pink': {
+            backgroundColor: `${getColorValue(semanticTokens.colors['accent-pink'], 'light')}15`,
+            color: getColorValue(semanticTokens.colors['accent-pink'], 'light'),
+          },
+          '&.tag-violet': {
+            backgroundColor: `${getColorValue(semanticTokens.colors['accent-violet'], 'light')}15`,
+            color: getColorValue(semanticTokens.colors['accent-violet'], 'light'),
+          },
+          '&.tag-aqua': {
+            backgroundColor: `${getColorValue(semanticTokens.colors['accent-aqua'], 'light')}15`,
+            color: getColorValue(semanticTokens.colors['accent-aqua'], 'light'),
+          },
+          '&.tag-lemon': {
+            backgroundColor: `${getColorValue(semanticTokens.colors['accent-lemon'], 'light')}15`,
+            color: getColorValue(semanticTokens.colors['accent-lemon'], 'light'),
+          },
+          '&.tag-blue': {
+            backgroundColor: `${getColorValue(semanticTokens.colors['accent-blue'], 'light')}15`,
+            color: getColorValue(semanticTokens.colors['accent-blue'], 'light'),
+          },
+          '&.tag-sky': {
+            backgroundColor: `${getColorValue(semanticTokens.colors['accent-sky'], 'light')}15`,
+            color: getColorValue(semanticTokens.colors['accent-sky'], 'light'),
           },
         },
       });
@@ -347,10 +686,6 @@ module.exports = {
             gap: '8px',
             cursor: 'pointer',
             userSelect: 'none',
-            '&:disabled': {
-              cursor: 'not-allowed',
-              opacity: 0.5,
-            },
             '.checkbox-input-wrapper': {
               position: 'relative',
               display: 'inline-flex',
@@ -360,15 +695,535 @@ module.exports = {
             '.checkbox-input': {
               appearance: 'none',
               border: `1px solid ${getColorValue(semanticTokens.colors['border-primary'], 'dark')}`,
-              borderRadius: semanticTokens.borderRadius['radius-xxs'],
               backgroundColor: getColorValue(semanticTokens.colors['background-primary'], 'dark'),
               transition: 'all 0.2s ease-in-out',
+              
+              // Default checkbox styles
+              '&:not(.checkbox-radio)': {
+                borderRadius: semanticTokens.borderRadius['radius-xxs'],
+              },
+              
+              // Radio specific styles
+              '&.checkbox-radio': {
+                borderRadius: '50%',
+              },
+              
+              // Sizes for both checkbox and radio
+              '&.checkbox-sm': {
+                width: '16px',
+                height: '16px',
+              },
+              '&.checkbox-md': {
+                width: '20px',
+                height: '20px',
+              },
+              
+              // Checked state for both
               '&:checked': {
                 backgroundColor: getColorValue(semanticTokens.colors['interactive-primary'], 'dark'),
+                borderColor: getColorValue(semanticTokens.colors['interactive-primary'], 'dark'),
+              },
+              
+              // Indeterminate state (checkbox only)
+              '&:not(.checkbox-radio):indeterminate': {
+                backgroundColor: getColorValue(semanticTokens.colors['interactive-primary'], 'dark'),
+                borderColor: getColorValue(semanticTokens.colors['interactive-primary'], 'dark'),
+              },
+              
+              '&:focus': {
+                outline: 'none',
+                boxShadow: `0 0 0 2px ${getColorValue(semanticTokens.colors['interactive-tertiary'], 'dark')}40`,
+              },
+              '&:hover:not(:disabled)': {
+                borderColor: getColorValue(semanticTokens.colors['interactive-primary'], 'dark'),
+              },
+            },
+            
+            // Icon styles for checkbox
+            '.checkbox-icon': {
+              position: 'absolute',
+              pointerEvents: 'none',
+              color: getColorValue(semanticTokens.colors['text-inverse-primary'], 'dark'),
+              opacity: '0',
+              transition: 'opacity 0.15s ease-in-out',
+              transform: 'translate(-50%, -50%)',
+              top: '50%',
+              left: '50%',
+            },
+            
+            // Icon styles for radio
+            '.radio-icon': {
+              position: 'absolute',
+              pointerEvents: 'none',
+              color: getColorValue(semanticTokens.colors['text-inverse-primary'], 'dark'),
+              opacity: '0',
+              transition: 'opacity 0.15s ease-in-out',
+              transform: 'translate(-50%, -50%)',
+              top: '50%',
+              left: '50%',
+            },
+            
+            // Show checkbox icon when checked or indeterminate
+            'input:checked ~ .checkbox-icon, input:indeterminate ~ .checkbox-icon.indeterminate': {
+              opacity: '1',
+            },
+            
+            // Show radio icon when checked
+            'input:checked ~ .radio-icon': {
+              opacity: '1',
+            },
+            
+            // Hide check icon when showing indeterminate icon
+            'input:indeterminate ~ .checkbox-icon:not(.indeterminate)': {
+              opacity: '0',
+            },
+            
+            '.checkbox-label': {
+              color: getColorValue(semanticTokens.colors['text-primary'], 'dark'),
+              fontSize: semanticTokens.typography['paragraph-sm'].fontSize,
+              lineHeight: semanticTokens.typography['paragraph-sm'].lineHeight,
+              '&.checkbox-sm': {
+                fontSize: semanticTokens.typography['paragraph-xs'].fontSize,
+                lineHeight: semanticTokens.typography['paragraph-xs'].lineHeight,
+              },
+            },
+            
+            // Disabled states
+            '&:disabled, &[disabled], &:has(input:disabled)': {
+              cursor: 'not-allowed',
+              opacity: 0.5,
+              '.checkbox-label': {
+                color: getColorValue(semanticTokens.colors['text-disabled'], 'dark'),
               },
             },
           },
+          // Toggle styles for dark mode
+          '.toggle': {
+            '.toggle-track': {
+              backgroundColor: getColorValue(semanticTokens.colors['background-tertiary'], 'dark'),
+            },
+
+            '.toggle-thumb': {
+              backgroundColor: getColorValue(semanticTokens.colors['background-primary'], 'dark'),
+            },
+
+            // Checked state
+            'input:checked ~ .toggle-track': {
+              backgroundColor: getColorValue(semanticTokens.colors['interactive-primary'], 'dark'),
+            },
+
+            // Focus state
+            'input:focus ~ .toggle-track': {
+              boxShadow: `0 0 0 2px ${getColorValue(semanticTokens.colors['interactive-tertiary'], 'dark')}40`,
+            },
+
+            // Hover state
+            '&:hover:not(.disabled) .toggle-track': {
+              backgroundColor: getColorValue(semanticTokens.colors['background-hover'], 'dark'),
+            },
+
+            '&:hover:not(.disabled) input:checked ~ .toggle-track': {
+              backgroundColor: getColorValue(semanticTokens.colors['interactive-hover'], 'dark'),
+            },
+
+            // Label styles
+            '.toggle-label': {
+              color: getColorValue(semanticTokens.colors['text-primary'], 'dark'),
+            },
+          },
+          // Add striped row styling for dark mode
+          '.table-striped .table-row:nth-child(even)': {
+            backgroundColor: getColorValue(semanticTokens.colors['background-secondary'], 'dark'),
+          },
+          // Add hoverable row styling for dark mode
+          '.table-hoverable .table-row:hover': {
+            backgroundColor: getColorValue(semanticTokens.colors['background-hover'], 'dark'),
+            cursor: 'pointer',
+          },
+          // Add loading overlay styling for dark mode
+          '.table-loading-overlay': {
+            backgroundColor: 'rgba(0, 0, 0, 0.7)', // Darker overlay for dark mode
+          },
+          // Add loading spinner styling for dark mode
+          '.table-loading-spinner': {
+            border: `3px solid ${getColorValue(semanticTokens.colors['interactive-primary'], 'dark')}`,
+            borderTopColor: 'transparent',
+          },
+          '.table-loading-spinner-sm': {
+            border: `2px solid ${getColorValue(semanticTokens.colors['interactive-primary'], 'dark')}`,
+            borderTopColor: 'transparent',
+          },
+          '.table': {
+            '.table-cell, .table-selection-cell': {
+              color: getColorValue(semanticTokens.colors['text-primary'], 'dark'),
+              borderBottom: `1px solid ${getColorValue(semanticTokens.colors['border-secondary'], 'dark')}`,
+              
+              '&.table-selection-cell': {
+                borderBottom: `1px solid ${getColorValue(semanticTokens.colors['border-secondary'], 'dark')}`,
+                textAlign: 'center',
+              },
+            },
+          },
+          // Add tag styles
+          '.tag': {
+            // Color variants - Dark mode
+            '&.tag-primary': {
+              backgroundColor: `${getColorValue(semanticTokens.colors['interactive-primary'], 'dark')}15`,
+              color: getColorValue(semanticTokens.colors['interactive-primary'], 'dark'),
+            },
+            '&.tag-secondary': {
+              backgroundColor: `${getColorValue(semanticTokens.colors['interactive-secondary'], 'dark')}15`,
+              color: getColorValue(semanticTokens.colors['interactive-secondary'], 'dark'),
+            },
+            '&.tag-success': {
+              backgroundColor: `${getColorValue(semanticTokens.colors['status-success'], 'dark')}15`,
+              color: getColorValue(semanticTokens.colors['status-success'], 'dark'),
+            },
+            '&.tag-warning': {
+              backgroundColor: `${getColorValue(semanticTokens.colors['status-warning'], 'dark')}15`,
+              color: getColorValue(semanticTokens.colors['status-warning'], 'dark'),
+            },
+            '&.tag-error': {
+              backgroundColor: `${getColorValue(semanticTokens.colors['status-error'], 'dark')}15`,
+              color: getColorValue(semanticTokens.colors['status-error'], 'dark'),
+            },
+            '&.tag-info': {
+              backgroundColor: `${getColorValue(semanticTokens.colors['status-info'], 'dark')}15`,
+              color: getColorValue(semanticTokens.colors['status-info'], 'dark'),
+            },
+            '&.tag-fuchsia': {
+              backgroundColor: `${getColorValue(semanticTokens.colors['accent-fuchsia'], 'dark')}15`,
+              color: getColorValue(semanticTokens.colors['accent-fuchsia'], 'dark'),
+            },
+            '&.tag-bumblebee': {
+              backgroundColor: `${getColorValue(semanticTokens.colors['accent-bumblebee'], 'dark')}15`,
+              color: getColorValue(semanticTokens.colors['accent-bumblebee'], 'dark'),
+            },
+            '&.tag-pink': {
+              backgroundColor: `${getColorValue(semanticTokens.colors['accent-pink'], 'dark')}15`,
+              color: getColorValue(semanticTokens.colors['accent-pink'], 'dark'),
+            },
+            '&.tag-violet': {
+              backgroundColor: `${getColorValue(semanticTokens.colors['accent-violet'], 'dark')}15`,
+              color: getColorValue(semanticTokens.colors['accent-violet'], 'dark'),
+            },
+            '&.tag-aqua': {
+              backgroundColor: `${getColorValue(semanticTokens.colors['accent-aqua'], 'dark')}15`,
+              color: getColorValue(semanticTokens.colors['accent-aqua'], 'dark'),
+            },
+            '&.tag-lemon': {
+              backgroundColor: `${getColorValue(semanticTokens.colors['accent-lemon'], 'dark')}15`,
+              color: getColorValue(semanticTokens.colors['accent-lemon'], 'dark'),
+            },
+            '&.tag-blue': {
+              backgroundColor: `${getColorValue(semanticTokens.colors['accent-blue'], 'dark')}15`,
+              color: getColorValue(semanticTokens.colors['accent-blue'], 'dark'),
+            },
+            '&.tag-sky': {
+              backgroundColor: `${getColorValue(semanticTokens.colors['accent-sky'], 'dark')}15`,
+              color: getColorValue(semanticTokens.colors['accent-sky'], 'dark'),
+            },
+          },
         }
+      });
+
+      // Add table styles
+      addComponents({
+        // Light mode styles
+        '.table-container': {
+          position: 'relative',
+          width: '100%',
+          overflow: 'auto',
+        },
+        '.table': {
+          width: '100%',
+          borderCollapse: 'separate',
+          borderSpacing: 0,
+          
+          // Table header styles
+          'thead': {
+            backgroundColor: getColorValue(semanticTokens.colors['background-secondary'], 'light'),
+          },
+          
+          // Table header cell styles
+          '.table-header-cell': {
+            padding: `${semanticTokens.spacing['component-md']} ${semanticTokens.spacing['component-md']}`,
+            fontWeight: semanticTokens.typography['label-sm'].fontWeight,
+            color: getColorValue(semanticTokens.colors['text-primary'], 'light'),
+            textAlign: 'left',
+            borderBottom: `1px solid ${getColorValue(semanticTokens.colors['border-secondary'], 'light')}`,
+            whiteSpace: 'nowrap',
+            
+            '&.table-selection-cell': {
+              width: '48px',
+              padding: `${semanticTokens.spacing['component-md']} ${semanticTokens.spacing['component-sm']}`,
+              backgroundColor: 'inherit',
+              borderBottom: `1px solid ${getColorValue(semanticTokens.colors['border-secondary'], 'light')}`,
+            },
+          },
+          
+          // Table cell styles
+          '.table-cell, .table-selection-cell': {
+            padding: `${semanticTokens.spacing['component-md']} ${semanticTokens.spacing['component-md']}`,
+            borderBottom: `1px solid ${getColorValue(semanticTokens.colors['border-secondary'], 'light')}`,
+            color: getColorValue(semanticTokens.colors['text-primary'], 'light'),
+            
+            '&.table-selection-cell': {
+              width: '48px',
+              padding: `${semanticTokens.spacing['component-md']} ${semanticTokens.spacing['component-sm']}`,
+              backgroundColor: 'inherit',
+              borderBottom: `1px solid ${getColorValue(semanticTokens.colors['border-secondary'], 'light')}`,
+              textAlign: 'center',
+            },
+          },
+          
+          // Table row styles
+          '.table-row': {
+            transition: 'background-color 0.2s ease-in-out',
+            
+            '&.selected': {
+              backgroundColor: `${getColorValue(semanticTokens.colors['interactive-tertiary'], 'light')}15`,
+              
+              '.table-selection-cell': {
+                backgroundColor: 'inherit',
+                borderBottom: `1px solid ${getColorValue(semanticTokens.colors['border-secondary'], 'light')}`,
+              },
+            },
+            
+            '&:hover': {
+              backgroundColor: getColorValue(semanticTokens.colors['background-hover'], 'light'),
+              
+              '.table-selection-cell': {
+                backgroundColor: 'inherit',
+              },
+            },
+          },
+        },
+
+        '.table-empty': {
+          padding: `${semanticTokens.spacing['component-lg']}`,
+          textAlign: 'center',
+          color: getColorValue(semanticTokens.colors['text-tertiary'], 'light'),
+          fontSize: semanticTokens.typography['paragraph-sm'].fontSize,
+        },
+
+        '.table-striped .table-row:nth-child(even)': {
+          backgroundColor: getColorValue(semanticTokens.colors['background-secondary'], 'light'),
+        },
+
+        '.table-hoverable .table-row:hover': {
+          backgroundColor: getColorValue(semanticTokens.colors['background-hover'], 'light'),
+          cursor: 'pointer',
+        },
+
+        '.table-compact .table-header-cell, .table-compact .table-cell': {
+          padding: `${semanticTokens.spacing['component-sm']} ${semanticTokens.spacing['component-sm']}`,
+        },
+
+        '.table-loading-overlay': {
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          backgroundColor: 'rgba(255, 255, 255, 0.7)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        },
+
+        '.table-loading-spinner': {
+          width: '2rem',
+          height: '2rem',
+          borderRadius: '50%',
+          border: `3px solid ${getColorValue(semanticTokens.colors['interactive-primary'], 'light')}`,
+          borderTopColor: 'transparent',
+          animation: 'spin 1s linear infinite',
+        },
+
+        // Cell alignment classes
+        '.text-center': {
+          textAlign: 'center',
+        },
+        '.text-right': {
+          textAlign: 'right',
+        },
+
+        // In the light mode styles section
+        '.table-header-cell.sortable': {
+          cursor: 'pointer',
+          userSelect: 'none',
+          '&:hover': {
+            backgroundColor: getColorValue(semanticTokens.colors['background-hover'], 'light'),
+          },
+        },
+
+        '.table-header-content': {
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+        },
+
+        '.table-sort-icons': {
+          display: 'flex',
+          flexDirection: 'column',
+          marginLeft: '4px',
+          height: '14px',
+        },
+
+        '.sort-icon': {
+          color: getColorValue(semanticTokens.colors['text-tertiary'], 'light'),
+          transition: 'color 0.2s ease-in-out',
+          
+          '&.active': {
+            color: getColorValue(semanticTokens.colors['interactive-primary'], 'light'),
+          },
+        },
+
+        '.sort-icon-default': {
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          height: '14px',
+        },
+
+        '.table-load-more': {
+          display: 'flex',
+          justifyContent: 'center',
+          padding: semanticTokens.spacing['component-md'],
+          borderTop: `1px solid ${getColorValue(semanticTokens.colors['border-secondary'], 'light')}`,
+        },
+
+        '.table-loading-spinner-sm': {
+          width: '1rem',
+          height: '1rem',
+          borderRadius: '50%',
+          border: `2px solid ${getColorValue(semanticTokens.colors['interactive-primary'], 'light')}`,
+          borderTopColor: 'transparent',
+          animation: 'spin 1s linear infinite',
+        },
+
+        '.filter-button': {
+          padding: semanticTokens.spacing['component-xs'],
+          borderRadius: semanticTokens.borderRadius['radius-sm'],
+          cursor: 'pointer',
+          display: 'inline-flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          color: getColorValue(semanticTokens.colors['text-tertiary'], 'light'),
+          '&:hover': {
+            backgroundColor: getColorValue(semanticTokens.colors['background-hover'], 'light'),
+          },
+          '&.active': {
+            color: getColorValue(semanticTokens.colors['interactive-primary'], 'light'),
+          },
+        },
+
+        '.filter-dropdown': {
+          position: 'absolute',
+          top: '100%',
+          right: 0,
+          marginTop: semanticTokens.spacing['component-xs'],
+          backgroundColor: getColorValue(semanticTokens.colors['background-primary'], 'light'),
+          border: `1px solid ${getColorValue(semanticTokens.colors['border-primary'], 'light')}`,
+          borderRadius: semanticTokens.borderRadius['radius-sm'],
+          boxShadow: semanticTokens.shadows['shadow-lg'],
+          minWidth: '200px',
+          zIndex: 50,
+        },
+
+        '.filter-dropdown-header': {
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          padding: semanticTokens.spacing['component-sm'],
+          borderBottom: `1px solid ${getColorValue(semanticTokens.colors['border-primary'], 'light')}`,
+        },
+
+        '.filter-dropdown-title': {
+          fontSize: semanticTokens.typography['paragraph-sm'].fontSize,
+          fontWeight: semanticTokens.typography['paragraph-sm-medium'].fontWeight,
+          color: getColorValue(semanticTokens.colors['text-primary'], 'light'),
+        },
+
+        '.filter-clear-button': {
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: semanticTokens.spacing['component-xs'],
+          fontSize: semanticTokens.typography['paragraph-sm'].fontSize,
+          color: getColorValue(semanticTokens.colors['text-tertiary'], 'light'),
+          '&:hover': {
+            color: getColorValue(semanticTokens.colors['text-primary'], 'light'),
+          },
+        },
+
+        '.filter-dropdown-content': {
+          maxHeight: '200px',
+          overflowY: 'auto',
+          padding: semanticTokens.spacing['component-xs'],
+          position: 'relative',
+          zIndex: 51,
+        },
+
+        '.filter-option': {
+          padding: semanticTokens.spacing['component-xs'],
+          cursor: 'pointer',
+          '&:hover': {
+            backgroundColor: getColorValue(semanticTokens.colors['background-hover'], 'light'),
+          },
+          width: '100%',
+        },
+
+        '.filter-option-text': {
+          // Remove this class since we're using the Checkbox component's label
+        },
+
+        '.table-header-actions': {
+          display: 'flex',
+          alignItems: 'center',
+          gap: semanticTokens.spacing['component-xs'],
+        },
+
+        '.table-selection-cell': {
+          width: '40px',
+          padding: `${semanticTokens.spacing['component-sm']} ${semanticTokens.spacing['component-sm']}`,
+          textAlign: 'center',
+        },
+
+        '.table-row': {
+          '&.selected': {
+            backgroundColor: `${getColorValue(semanticTokens.colors['interactive-tertiary'], 'light')}20`,
+          },
+        },
+      });
+
+      // Dark mode styles
+      addComponents({
+        '.dark': {
+          '.table': {
+            'thead': {
+              backgroundColor: getColorValue(semanticTokens.colors['background-secondary'], 'dark'),
+            },
+            '.table-header-cell': {
+              color: getColorValue(semanticTokens.colors['text-primary'], 'dark'),
+              borderBottom: `1px solid ${getColorValue(semanticTokens.colors['border-secondary'], 'dark')}`,
+              
+              '&.table-selection-cell': {
+                borderBottom: `1px solid ${getColorValue(semanticTokens.colors['border-secondary'], 'dark')}`,
+              },
+            },
+            '.table-cell, .table-selection-cell': {
+              color: getColorValue(semanticTokens.colors['text-primary'], 'dark'),
+              borderBottom: `1px solid ${getColorValue(semanticTokens.colors['border-secondary'], 'dark')}`,
+              
+              '&.table-selection-cell': {
+                borderBottom: `1px solid ${getColorValue(semanticTokens.colors['border-secondary'], 'dark')}`,
+                textAlign: 'center',
+              },
+            },
+          },
+        },
       });
     },
   ],

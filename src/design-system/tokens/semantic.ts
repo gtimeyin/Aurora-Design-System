@@ -44,7 +44,71 @@ export const semanticTokens = {
       default: primitiveTokens.colors['slate-50'],
     },
     'background-inverse': primitiveTokens.colors['slate-900'],
+    'background-disabled': primitiveTokens.colors['slate-200'],
+    
 
+    //foreground colors
+    'foreground-primary': {
+      light: primitiveTokens.colors['slate-900'],
+      dark: primitiveTokens.colors['gray-50'],
+      default: primitiveTokens.colors['slate-900'],
+    },
+    'foreground-secondary': {
+      light: primitiveTokens.colors['slate-700'],
+      dark: primitiveTokens.colors['gray-200'],
+      default: primitiveTokens.colors['slate-700'],
+    },
+    'foreground-tertiary': {
+      light: primitiveTokens.colors['slate-500'],
+      dark: primitiveTokens.colors['gray-300'],
+      default: primitiveTokens.colors['slate-500'],
+    },
+    'foreground-quaternary': {
+      light: primitiveTokens.colors['slate-300'],
+      dark: primitiveTokens.colors['gray-400'],
+      default: primitiveTokens.colors['slate-300'],
+    },
+    'foreground-quinary': {
+      light: primitiveTokens.colors['slate-100'],
+      dark: primitiveTokens.colors['gray-700'],
+      default: primitiveTokens.colors['slate-100'],
+    },
+    'foreground-disabled': {
+      light: primitiveTokens.colors['slate-300'],
+      dark: primitiveTokens.colors['gray-400'],
+      default: primitiveTokens.colors['slate-300'],
+    },
+    'foreground-inverse-primary': {
+      light: primitiveTokens.colors['white'],
+      dark: primitiveTokens.colors['gray-900'],
+      default: primitiveTokens.colors['white'],
+    },
+    'foreground-inverse-secondary': { 
+      light: primitiveTokens.colors['slate-100'],
+      dark: primitiveTokens.colors['gray-700'],
+      default: primitiveTokens.colors['slate-100'],
+    },
+    'foreground-inverse-tertiary': {
+      light: primitiveTokens.colors['slate-300'],
+      dark: primitiveTokens.colors['gray-400'],
+      default: primitiveTokens.colors['slate-300'],
+    },
+    'foreground-inverse-quaternary': {
+      light: primitiveTokens.colors['slate-100'],
+      dark: primitiveTokens.colors['gray-700'],
+      default: primitiveTokens.colors['slate-100'],
+    },
+    'foreground-inverse-quinary': {
+      light: primitiveTokens.colors['white'],
+      dark: primitiveTokens.colors['gray-900'],
+      default: primitiveTokens.colors['white'],
+    },
+    'foreground-inverse-disabled': {
+      light: primitiveTokens.colors['slate-300'],
+      dark: primitiveTokens.colors['gray-400'],
+      default: primitiveTokens.colors['slate-300'],
+    },
+    
     // Text colors
     'text-primary': {
       light: primitiveTokens.colors['slate-900'],
