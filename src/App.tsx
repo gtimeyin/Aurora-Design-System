@@ -62,21 +62,17 @@ function App() {
 
   return (
     <ThemeProvider>
-      <div className="min-h-screen bg-background-primary">
-        <div className="flex">
-          <Sidebar activeDemo={activeDemo} onDemoChange={setActiveDemo} />
-          <div className="flex-1 ml-64">
-            <nav className="p-4 bg-background-secondary flex justify-between items-center">
-              <h1 className="text-heading-lg text-text-primary">Aurora Design System</h1>
-              <DarkModeSwitcher />
-            </nav>
-            <div className="p-8 border-2 border-border-secondary rounded-[24px] shadow-md">
-              <div className="">
-                <main className="container mx-auto p-8">
-                  {renderDemo()}
-                </main>
-              </div>
-            </div>
+      <div className="min-h-screen bg-background-secondary flex">
+        <Sidebar activeDemo={activeDemo} onDemoChange={setActiveDemo} />
+        <div className="flex-1 ml-64">
+          <nav className="p-4 bg-background-secondary flex justify-between items-center">
+            <h1 className="text-heading-md text-text-secondary font-medium">Aurora Design System</h1>
+            <DarkModeSwitcher />
+          </nav>
+          <div className="p-8 bg-background-primary border border-border-secondary rounded-radius-xl p-8 w-full h-full overflow-y-auto">
+            <main>
+              {renderDemo()}
+            </main>
           </div>
         </div>
       </div>

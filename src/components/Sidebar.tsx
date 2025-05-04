@@ -39,7 +39,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeDemo, onDemoChange }) =>
             onClick={() => onDemoChange(demo.id)}
             className={`w-full text-left px-4 py-2 rounded-md transition-colors ${
               activeDemo === demo.id
-                ? 'bg-background-primary text-text-primary font-semibold border border-button-white-border'
+                ? 'bg-background-primary text-text-primary font-medium border border-border-tertiary shadow-elevation-1'
                 : 'text-text-primary hover:bg-background-hover'
             }`}
           >
