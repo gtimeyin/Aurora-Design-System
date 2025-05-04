@@ -164,6 +164,37 @@ module.exports = {
         '.accordion-icon': componentTokens.light.accordion.icon,
         '.accordion-title': componentTokens.light.accordion.title,
         '.accordion-caret': componentTokens.light.accordion.caret,
+        
+        // Drawer styles
+        '.drawer': {
+          ...componentTokens.light.drawer.base,
+          '&.drawer-right': componentTokens.light.drawer.variants.right,
+          '&.drawer-left': componentTokens.light.drawer.variants.left,
+          '&.drawer-top': componentTokens.light.drawer.variants.top,
+          '&.drawer-bottom': componentTokens.light.drawer.variants.bottom,
+          '&.drawer-sm': componentTokens.light.drawer.sizes.sm,
+          '&.drawer-md': componentTokens.light.drawer.sizes.md,
+          '&.drawer-lg': componentTokens.light.drawer.sizes.lg,
+          '&.drawer-full': componentTokens.light.drawer.sizes.full,
+        },
+        '.drawer-overlay': {
+          ...componentTokens.light.drawer.overlay,
+        },
+        '.drawer-header': {
+          ...componentTokens.light.drawer.header,
+        },
+        '.drawer-title': {
+          ...componentTokens.light.drawer.title,
+        },
+        '.drawer-close-button': {
+          ...componentTokens.light.drawer.closeButton,
+        },
+        '.drawer-body': {
+          ...componentTokens.light.drawer.body,
+        },
+        '.drawer-footer': {
+          ...componentTokens.light.drawer.footer,
+        },
         // Typography styles
         // Paragraph styles
         '.text-paragraph-xs': semanticTokens.typography['paragraph-xs'],
@@ -977,6 +1008,36 @@ module.exports = {
               backgroundColor: `${getColorValue(semanticTokens.colors['accent-sky'], 'dark')}15`,
               color: getColorValue(semanticTokens.colors['accent-sky'], 'dark'),
             },
+          },
+          // Drawer styles for dark mode
+          '.drawer': {
+            ...componentTokens.dark.drawer.base,
+            '&.drawer-right': componentTokens.dark.drawer.variants.right,
+            '&.drawer-left': componentTokens.dark.drawer.variants.left,
+            '&.drawer-top': componentTokens.dark.drawer.variants.top,
+            '&.drawer-bottom': componentTokens.dark.drawer.variants.bottom,
+            '&.drawer-sm': componentTokens.dark.drawer.sizes.sm,
+            '&.drawer-md': componentTokens.dark.drawer.sizes.md,
+            '&.drawer-lg': componentTokens.dark.drawer.sizes.lg,
+            '&.drawer-full': componentTokens.dark.drawer.sizes.full,
+          },
+          '.drawer-overlay': {
+            ...componentTokens.dark.drawer.overlay,
+          },
+          '.drawer-header': {
+            ...componentTokens.dark.drawer.header,
+          },
+          '.drawer-title': {
+            ...componentTokens.dark.drawer.title,
+          },
+          '.drawer-close-button': {
+            ...componentTokens.dark.drawer.closeButton,
+          },
+          '.drawer-body': {
+            ...componentTokens.dark.drawer.body,
+          },
+          '.drawer-footer': {
+            ...componentTokens.dark.drawer.footer,
           },
         }
       });

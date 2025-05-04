@@ -7,9 +7,11 @@ type Demo = {
 
 const demos: Demo[] = [
   { id: 'overview', label: 'Overview' },
+  { id: 'accordion', label: 'Accordion' },
   { id: 'badge', label: 'Badge' },
   { id: 'button', label: 'Button' },
   { id: 'button-group', label: 'Button Group' },
+  { id: 'drawer', label: 'Drawer' },
   { id: 'typography', label: 'Typography' },
   { id: 'checkbox', label: 'Checkbox' },
   { id: 'layout', label: 'Layout' },

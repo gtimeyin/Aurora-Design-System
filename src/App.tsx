@@ -17,6 +17,8 @@ import { DatePickerDemo } from './pages/DatePickerDemo';
 import { TabsDemo } from './pages/TabsDemo';
 import { ButtonGroupDemo } from './pages/ButtonGroupDemo';
 import { BentoBoxDemo } from './pages/BentoBoxDemo';
+import { AccordionDemo } from './pages/AccordionDemo';
+import { DrawerDemo } from './pages/DrawerDemo';
 
 function App() {
   const [activeDemo, setActiveDemo] = useState('overview');
@@ -55,6 +57,10 @@ function App() {
         return <ButtonGroupDemo />;
       case 'bento-box':
         return <BentoBoxDemo />;
+      case 'accordion':
+        return <AccordionDemo />;
+      case 'drawer':
+        return <DrawerDemo />;
       default:
         return <div>Demo not found</div>;
     }

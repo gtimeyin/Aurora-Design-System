@@ -1081,6 +1081,149 @@ const getComponentTokens = (mode: ThemeMode) => ({
       },
     },
   },
+
+  drawer: {
+    base: {
+      position: 'fixed',
+      zIndex: 50,
+      backgroundColor: getColorValue(semanticTokens.colors['background-primary'], mode),
+      boxShadow: semanticTokens.shadows['elevation-4'],
+      transition: 'transform 0.3s ease-in-out, opacity 0.3s ease-in-out',
+      display: 'flex',
+      flexDirection: 'column',
+    },
+    overlay: {
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundColor: 'rgba(0, 0, 0, 0.5)',
+      zIndex: 40,
+      opacity: 0,
+      visibility: 'hidden',
+      transition: 'opacity 0.3s ease-in-out, visibility 0.3s ease-in-out',
+      '&.drawer-overlay-open': {
+        opacity: 1,
+        visibility: 'visible',
+      },
+    },
+    header: {
+      padding: `${semanticTokens.spacing['component-md']} ${semanticTokens.spacing['component-lg']}`,
+      borderBottom: `1px solid ${getColorValue(semanticTokens.colors['border-secondary'], mode)}`,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+    },
+    title: {
+      color: getColorValue(semanticTokens.colors['text-primary'], mode),
+      fontWeight: semanticTokens.typography['heading-sm'].fontWeight,
+      fontSize: semanticTokens.typography['heading-sm'].fontSize,
+      lineHeight: semanticTokens.typography['heading-sm'].lineHeight,
+    },
+    closeButton: {
+      background: 'none',
+      border: 'none',
+      cursor: 'pointer',
+      color: getColorValue(semanticTokens.colors['text-tertiary'], mode),
+      padding: semanticTokens.spacing['component-xs'],
+      borderRadius: semanticTokens.borderRadius['radius-sm'],
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      transition: 'all 0.2s ease-in-out',
+      '&:hover': {
+        color: getColorValue(semanticTokens.colors['text-primary'], mode),
+        backgroundColor: getColorValue(semanticTokens.colors['background-hover'], mode),
+      },
+    },
+    body: {
+      padding: semanticTokens.spacing['component-lg'],
+      flex: '1 1 auto',
+      overflowY: 'auto',
+    },
+    footer: {
+      padding: `${semanticTokens.spacing['component-md']} ${semanticTokens.spacing['component-lg']}`,
+      borderTop: `1px solid ${getColorValue(semanticTokens.colors['border-secondary'], mode)}`,
+      display: 'flex',
+      justifyContent: 'flex-end',
+      gap: semanticTokens.spacing['component-md'],
+    },
+    variants: {
+      right: {
+        top: 0,
+        right: 0,
+        bottom: 0,
+        transform: 'translateX(100%)',
+        '&.drawer-open': {
+          transform: 'translateX(0)',
+        },
+      },
+      left: {
+        top: 0,
+        left: 0,
+        bottom: 0,
+        transform: 'translateX(-100%)',
+        '&.drawer-open': {
+          transform: 'translateX(0)',
+        },
+      },
+      top: {
+        top: 0,
+        left: 0,
+        right: 0,
+        transform: 'translateY(-100%)',
+        '&.drawer-open': {
+          transform: 'translateY(0)',
+        },
+      },
+      bottom: {
+        bottom: 0,
+        left: 0,
+        right: 0,
+        transform: 'translateY(100%)',
+        '&.drawer-open': {
+          transform: 'translateY(0)',
+        },
+      },
+    },
+    sizes: {
+      sm: {
+        '&.drawer-right, &.drawer-left': {
+          width: '300px',
+        },
+        '&.drawer-top, &.drawer-bottom': {
+          height: '250px',
+        },
+      },
+      md: {
+        '&.drawer-right, &.drawer-left': {
+          width: '400px',
+        },
+        '&.drawer-top, &.drawer-bottom': {
+          height: '350px',
+        },
+      },
+      lg: {
+        '&.drawer-right, &.drawer-left': {
+          width: '550px',
+        },
+        '&.drawer-top, &.drawer-bottom': {
+          height: '450px',
+        },
+      },
+      full: {
+        '&.drawer-right, &.drawer-left': {
+          width: '100%',
+          maxWidth: '650px',
+        },
+        '&.drawer-top, &.drawer-bottom': {
+          height: '100%',
+          maxHeight: '90vh',
+        },
+      },
+    },
+  },
 });
 
 export const componentTokens = {
