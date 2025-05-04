@@ -1,4 +1,5 @@
 import { semanticTokens } from './semantic';
+import { primitiveTokens } from './primitive';
 import { ThemeMode } from '../theme';
 import { getColorValue } from '../utils/colors';
 
@@ -477,7 +478,7 @@ const getComponentTokens = (mode: ThemeMode) => ({
         },
         '&.badge-solid': {
           backgroundColor: getColorValue(semanticTokens.colors['utility-bumblebee-500'], mode),
-          color: getColorValue(semanticTokens.colors['text-primary'], mode),
+          color: getColorValue(primitiveTokens.colors['bumblebee-800'], mode),
         },
         '&.badge-outline': {
           color: getColorValue(semanticTokens.colors['utility-bumblebee-800'], mode),
@@ -737,6 +738,345 @@ const getComponentTokens = (mode: ThemeMode) => ({
         label: {
           fontSize: semanticTokens.typography['label-base'].fontSize,
           lineHeight: semanticTokens.typography['label-base'].lineHeight,
+        },
+      },
+    },
+  },
+
+  accordion: {
+    base: {
+      width: '100%',
+      borderRadius: semanticTokens.borderRadius['radius-md'],
+      overflow: 'hidden',
+    },
+    item: {
+      borderBottom: `1px solid ${getColorValue(semanticTokens.colors['border-secondary'], mode)}`,
+      '&:last-child': {
+        borderBottom: 'none',
+      },
+      '&.accordion-item-disabled': {
+        opacity: 0.5,
+        cursor: 'not-allowed',
+      },
+    },
+    button: {
+      display: 'flex',
+      alignItems: 'center',
+      width: '100%',
+      textAlign: 'left',
+      border: 'none',
+      background: 'none',
+      cursor: 'pointer',
+      color: getColorValue(semanticTokens.colors['text-primary'], mode),
+      fontWeight: semanticTokens.typography['label-base'].fontWeight,
+      transition: 'all 0.2s ease-in-out',
+      '&:focus': {
+        outline: 'none',
+        backgroundColor: getColorValue(semanticTokens.colors['background-hover'], mode),
+      },
+      '&:hover:not(:disabled)': {
+        backgroundColor: getColorValue(semanticTokens.colors['background-hover'], mode),
+      },
+      '&.accordion-button-expanded': {
+        backgroundColor: getColorValue(semanticTokens.colors['background-hover'], mode),
+        fontWeight: semanticTokens.typography['label-base'].fontWeight,
+      },
+      '&:disabled': {
+        cursor: 'not-allowed',
+      },
+    },
+    panel: {
+      padding: semanticTokens.spacing['component-lg'],
+      backgroundColor: getColorValue(semanticTokens.colors['background-primary'], mode),
+      color: getColorValue(semanticTokens.colors['text-primary'], mode),
+      fontSize: semanticTokens.typography['paragraph-base'].fontSize,
+      lineHeight: semanticTokens.typography['paragraph-base'].lineHeight,
+      overflow: 'hidden',
+      transition: 'max-height 0.3s ease-in-out, padding 0.3s ease-in-out',
+    },
+    icon: {
+      marginRight: semanticTokens.spacing['component-sm'],
+      color: getColorValue(semanticTokens.colors['text-tertiary'], mode),
+      flexShrink: 0,
+    },
+    title: {
+      flex: 1,
+    },
+    caret: {
+      marginLeft: semanticTokens.spacing['component-sm'],
+      color: getColorValue(semanticTokens.colors['text-tertiary'], mode),
+      flexShrink: 0,
+      transition: 'transform 0.2s ease-in-out',
+    },
+    variants: {
+      default: {
+        backgroundColor: getColorValue(semanticTokens.colors['background-primary'], mode),
+      },
+      bordered: {
+        border: `1px solid ${getColorValue(semanticTokens.colors['border-secondary'], mode)}`,
+      },
+      elevated: {
+        boxShadow: semanticTokens.shadows['elevation-1'],
+        backgroundColor: getColorValue(semanticTokens.colors['background-primary'], mode),
+      },
+    },
+    sizes: {
+      sm: {
+        button: {
+          padding: `${semanticTokens.spacing['component-sm']} ${semanticTokens.spacing['component-md']}`,
+          fontSize: semanticTokens.typography['label-sm'].fontSize,
+        },
+        panel: {
+          padding: semanticTokens.spacing['component-md'],
+          fontSize: semanticTokens.typography['paragraph-sm'].fontSize,
+        },
+      },
+      md: {
+        button: {
+          padding: `${semanticTokens.spacing['component-md']} ${semanticTokens.spacing['component-lg']}`,
+          fontSize: semanticTokens.typography['label-base'].fontSize,
+        },
+        panel: {
+          padding: semanticTokens.spacing['component-lg'],
+          fontSize: semanticTokens.typography['paragraph-base'].fontSize,
+        },
+      },
+      lg: {
+        button: {
+          padding: `${semanticTokens.spacing['component-lg']} ${semanticTokens.spacing['component-xl']}`,
+          fontSize: semanticTokens.typography['label-lg'].fontSize,
+        },
+        panel: {
+          padding: `${semanticTokens.spacing['component-lg']} ${semanticTokens.spacing['component-xl']}`,
+          fontSize: semanticTokens.typography['paragraph-lg'].fontSize,
+        },
+      },
+    },
+  },
+
+  table: {
+    base: {
+      width: '100%',
+      borderCollapse: 'separate',
+      borderSpacing: 0,
+    },
+    container: {
+      position: 'relative',
+      width: '100%',
+      overflow: 'auto',
+    },
+    header: {
+      backgroundColor: getColorValue(semanticTokens.colors['background-secondary'], mode),
+    },
+    headerCell: {
+      padding: `${semanticTokens.spacing['component-md']} ${semanticTokens.spacing['component-md']}`,
+      fontWeight: semanticTokens.typography['label-sm'].fontWeight,
+      color: getColorValue(semanticTokens.colors['text-primary'], mode),
+      textAlign: 'left',
+      borderBottom: `1px solid ${getColorValue(semanticTokens.colors['border-secondary'], mode)}`,
+      whiteSpace: 'nowrap',
+      '&.sortable': {
+        cursor: 'pointer',
+        userSelect: 'none',
+        '&:hover': {
+          backgroundColor: getColorValue(semanticTokens.colors['background-hover'], mode),
+        },
+      },
+      '&.table-selection-cell': {
+        width: '48px',
+        padding: `${semanticTokens.spacing['component-md']} ${semanticTokens.spacing['component-sm']}`,
+        backgroundColor: 'inherit',
+        borderBottom: `1px solid ${getColorValue(semanticTokens.colors['border-secondary'], mode)}`,
+      },
+    },
+    cell: {
+      padding: `${semanticTokens.spacing['component-md']} ${semanticTokens.spacing['component-md']}`,
+      borderBottom: `1px solid ${getColorValue(semanticTokens.colors['border-secondary'], mode)}`,
+      color: getColorValue(semanticTokens.colors['text-primary'], mode),
+      '&.table-selection-cell': {
+        width: '48px',
+        padding: `${semanticTokens.spacing['component-md']} ${semanticTokens.spacing['component-sm']}`,
+        backgroundColor: 'inherit',
+        borderBottom: `1px solid ${getColorValue(semanticTokens.colors['border-secondary'], mode)}`,
+        textAlign: 'center',
+      },
+    },
+    row: {
+      transition: 'background-color 0.2s ease-in-out',
+      '&.selected': {
+        backgroundColor: `${getColorValue(semanticTokens.colors['interactive-tertiary'], mode)}15`,
+        '.table-selection-cell': {
+          backgroundColor: 'inherit',
+          borderBottom: `1px solid ${getColorValue(semanticTokens.colors['border-secondary'], mode)}`,
+        },
+      },
+      '&:hover': {
+        backgroundColor: getColorValue(semanticTokens.colors['background-hover'], mode),
+        '.table-selection-cell': {
+          backgroundColor: 'inherit',
+        },
+      },
+    },
+    empty: {
+      padding: `${semanticTokens.spacing['component-lg']}`,
+      textAlign: 'center',
+      color: getColorValue(semanticTokens.colors['text-tertiary'], mode),
+      fontSize: semanticTokens.typography['paragraph-sm'].fontSize,
+    },
+    loadingOverlay: {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+      backgroundColor: mode === 'light' ? 'rgba(255, 255, 255, 0.7)' : 'rgba(0, 0, 0, 0.7)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    loadingSpinner: {
+      width: '2rem',
+      height: '2rem',
+      borderRadius: '50%',
+      border: `3px solid ${getColorValue(semanticTokens.colors['interactive-primary'], mode)}`,
+      borderTopColor: 'transparent',
+      animation: 'spin 1s linear infinite',
+    },
+    loadingSpinnerSm: {
+      width: '1rem',
+      height: '1rem',
+      borderRadius: '50%',
+      border: `2px solid ${getColorValue(semanticTokens.colors['interactive-primary'], mode)}`,
+      borderTopColor: 'transparent',
+      animation: 'spin 1s linear infinite',
+    },
+    headerContent: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+    },
+    sortIcon: {
+      color: getColorValue(semanticTokens.colors['text-tertiary'], mode),
+      transition: 'color 0.2s ease-in-out',
+      '&.active': {
+        color: getColorValue(semanticTokens.colors['interactive-primary'], mode),
+      },
+    },
+    sortIconDefault: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      height: '14px',
+    },
+    loadMore: {
+      display: 'flex',
+      justifyContent: 'center',
+      padding: semanticTokens.spacing['component-md'],
+      borderTop: `1px solid ${getColorValue(semanticTokens.colors['border-secondary'], mode)}`,
+    },
+    filterButton: {
+      padding: semanticTokens.spacing['component-xs'],
+      borderRadius: semanticTokens.borderRadius['radius-sm'],
+      cursor: 'pointer',
+      display: 'inline-flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      color: getColorValue(semanticTokens.colors['text-tertiary'], mode),
+      '&:hover': {
+        backgroundColor: getColorValue(semanticTokens.colors['background-hover'], mode),
+      },
+      '&.active': {
+        color: getColorValue(semanticTokens.colors['interactive-primary'], mode),
+      },
+    },
+    filterDropdown: {
+      position: 'absolute',
+      top: '100%',
+      right: 0,
+      marginTop: semanticTokens.spacing['component-xs'],
+      backgroundColor: getColorValue(semanticTokens.colors['background-primary'], mode),
+      border: `1px solid ${getColorValue(semanticTokens.colors['border-primary'], mode)}`,
+      borderRadius: semanticTokens.borderRadius['radius-sm'],
+      boxShadow: semanticTokens.shadows['elevation-4'],
+      minWidth: '200px',
+      zIndex: 50,
+    },
+    filterDropdownHeader: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      padding: semanticTokens.spacing['component-sm'],
+      borderBottom: `1px solid ${getColorValue(semanticTokens.colors['border-primary'], mode)}`,
+    },
+    filterDropdownTitle: {
+      fontSize: semanticTokens.typography['paragraph-sm'].fontSize,
+      fontWeight: semanticTokens.typography['paragraph-sm-medium'].fontWeight,
+      color: getColorValue(semanticTokens.colors['text-primary'], mode),
+    },
+    filterClearButton: {
+      display: 'inline-flex',
+      alignItems: 'center',
+      gap: semanticTokens.spacing['component-xs'],
+      fontSize: semanticTokens.typography['paragraph-sm'].fontSize,
+      color: getColorValue(semanticTokens.colors['text-tertiary'], mode),
+      '&:hover': {
+        color: getColorValue(semanticTokens.colors['text-primary'], mode),
+      },
+    },
+    filterDropdownContent: {
+      maxHeight: '200px',
+      overflowY: 'auto',
+      padding: semanticTokens.spacing['component-xs'],
+      position: 'relative',
+      zIndex: 51,
+    },
+    filterOption: {
+      padding: semanticTokens.spacing['component-xs'],
+      cursor: 'pointer',
+      '&:hover': {
+        backgroundColor: getColorValue(semanticTokens.colors['background-hover'], mode),
+      },
+      width: '100%',
+    },
+    headerActions: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: semanticTokens.spacing['component-xs'],
+    },
+    variants: {
+      bordered: {
+        border: `1px solid ${getColorValue(semanticTokens.colors['border-secondary'], mode)}`,
+        borderRadius: semanticTokens.borderRadius['radius-md'],
+        overflow: 'hidden',
+      },
+      striped: {
+        '.table-row:nth-child(even)': {
+          backgroundColor: getColorValue(semanticTokens.colors['background-secondary'], mode),
+        },
+      },
+      hoverable: {
+        '.table-row:hover': {
+          backgroundColor: getColorValue(semanticTokens.colors['background-hover'], mode),
+          cursor: 'pointer',
+        },
+      },
+    },
+    sizes: {
+      compact: {
+        headerCell: {
+          padding: `${semanticTokens.spacing['component-sm']} ${semanticTokens.spacing['component-sm']}`,
+        },
+        cell: {
+          padding: `${semanticTokens.spacing['component-sm']} ${semanticTokens.spacing['component-sm']}`,
+        },
+      },
+      default: {
+        headerCell: {
+          padding: `${semanticTokens.spacing['component-md']} ${semanticTokens.spacing['component-md']}`,
+        },
+        cell: {
+          padding: `${semanticTokens.spacing['component-md']} ${semanticTokens.spacing['component-md']}`,
         },
       },
     },

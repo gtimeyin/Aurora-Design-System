@@ -20,12 +20,12 @@
 }
 
 /* Remove conflicting CSS custom properties */
-  :root {
+:root {
   /* Keep only what's not defined in our design system */
-    --radius: 0.5rem;
-  }
+  --radius: 0.5rem;
+}
  
-  .dark {
+.dark {
   /* Dark mode specific overrides if needed */
 }
 

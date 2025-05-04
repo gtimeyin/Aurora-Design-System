@@ -138,6 +138,32 @@ module.exports = {
           '&.card-elevated': componentTokens.light.card.variants.elevated,
           '&.card-interactive': componentTokens.light.card.variants.interactive,
         },
+        // Accordion styles
+        '.accordion': {
+          ...componentTokens.light.accordion.base,
+          '&.accordion-default': componentTokens.light.accordion.variants.default,
+          '&.accordion-bordered': componentTokens.light.accordion.variants.bordered,
+          '&.accordion-elevated': componentTokens.light.accordion.variants.elevated,
+        },
+        '.accordion-item': {
+          ...componentTokens.light.accordion.item,
+        },
+        '.accordion-button': {
+          ...componentTokens.light.accordion.button,
+          '&.accordion-button-sm': componentTokens.light.accordion.sizes.sm.button,
+          '&.accordion-button-md': componentTokens.light.accordion.sizes.md.button,
+          '&.accordion-button-lg': componentTokens.light.accordion.sizes.lg.button,
+          '&.accordion-button-expanded': componentTokens.light.accordion.button['&.accordion-button-expanded'],
+        },
+        '.accordion-panel': {
+          ...componentTokens.light.accordion.panel,
+          '&.accordion-panel-sm': componentTokens.light.accordion.sizes.sm.panel,
+          '&.accordion-panel-md': componentTokens.light.accordion.sizes.md.panel,
+          '&.accordion-panel-lg': componentTokens.light.accordion.sizes.lg.panel,
+        },
+        '.accordion-icon': componentTokens.light.accordion.icon,
+        '.accordion-title': componentTokens.light.accordion.title,
+        '.accordion-caret': componentTokens.light.accordion.caret,
         // Typography styles
         // Paragraph styles
         '.text-paragraph-xs': semanticTokens.typography['paragraph-xs'],
@@ -619,7 +645,8 @@ module.exports = {
           '.bg-background-secondary': { backgroundColor: getColorValue(semanticTokens.colors['background-secondary'], 'dark') },
           '.bg-background-tertiary': { backgroundColor: getColorValue(semanticTokens.colors['background-tertiary'], 'dark') },
           '.bg-background-inverse': { backgroundColor: getColorValue(semanticTokens.colors['background-inverse'], 'dark') },
-          
+          '.bg-background-hover': { backgroundColor: getColorValue(semanticTokens.colors['background-hover'], 'dark') },
+          '.bg-background-active': { backgroundColor: getColorValue(semanticTokens.colors['background-active'], 'dark') },
           // Text colors
           '.text-text-primary': { color: getColorValue(semanticTokens.colors['text-primary'], 'dark') },
           '.text-text-secondary': { color: getColorValue(semanticTokens.colors['text-secondary'], 'dark') },
@@ -680,6 +707,32 @@ module.exports = {
             '&.badge-md': componentTokens.dark.badge.sizes.md,
             '&.badge-lg': componentTokens.dark.badge.sizes.lg,
           },
+          // Accordion styles for dark mode
+          '.accordion': {
+            ...componentTokens.dark.accordion.base,
+            '&.accordion-default': componentTokens.dark.accordion.variants.default,
+            '&.accordion-bordered': componentTokens.dark.accordion.variants.bordered,
+            '&.accordion-elevated': componentTokens.dark.accordion.variants.elevated,
+          },
+          '.accordion-item': {
+            ...componentTokens.dark.accordion.item,
+          },
+          '.accordion-button': {
+            ...componentTokens.dark.accordion.button,
+            '&.accordion-button-sm': componentTokens.dark.accordion.sizes.sm.button,
+            '&.accordion-button-md': componentTokens.dark.accordion.sizes.md.button,
+            '&.accordion-button-lg': componentTokens.dark.accordion.sizes.lg.button,
+            '&.accordion-button-expanded': componentTokens.dark.accordion.button['&.accordion-button-expanded'],
+          },
+          '.accordion-panel': {
+            ...componentTokens.dark.accordion.panel,
+            '&.accordion-panel-sm': componentTokens.dark.accordion.sizes.sm.panel,
+            '&.accordion-panel-md': componentTokens.dark.accordion.sizes.md.panel,
+            '&.accordion-panel-lg': componentTokens.dark.accordion.sizes.lg.panel,
+          },
+          '.accordion-icon': componentTokens.dark.accordion.icon,
+          '.accordion-title': componentTokens.dark.accordion.title,
+          '.accordion-caret': componentTokens.dark.accordion.caret,
           // Checkbox styles for dark mode
           '.checkbox': {
             display: 'inline-flex',
@@ -932,270 +985,148 @@ module.exports = {
       addComponents({
         // Light mode styles
         '.table-container': {
-          position: 'relative',
-          width: '100%',
-          overflow: 'auto',
+          ...componentTokens.light.table.container,
         },
         '.table': {
-          width: '100%',
-          borderCollapse: 'separate',
-          borderSpacing: 0,
+          ...componentTokens.light.table.base,
           
-          // Table header styles
           'thead': {
-            backgroundColor: getColorValue(semanticTokens.colors['background-secondary'], 'light'),
+            ...componentTokens.light.table.header,
           },
           
-          // Table header cell styles
           '.table-header-cell': {
-            padding: `${semanticTokens.spacing['component-md']} ${semanticTokens.spacing['component-md']}`,
-            fontWeight: semanticTokens.typography['label-sm'].fontWeight,
-            color: getColorValue(semanticTokens.colors['text-primary'], 'light'),
-            textAlign: 'left',
-            borderBottom: `1px solid ${getColorValue(semanticTokens.colors['border-secondary'], 'light')}`,
-            whiteSpace: 'nowrap',
+            ...componentTokens.light.table.headerCell,
             
             '&.table-selection-cell': {
-              width: '48px',
-              padding: `${semanticTokens.spacing['component-md']} ${semanticTokens.spacing['component-sm']}`,
-              backgroundColor: 'inherit',
-              borderBottom: `1px solid ${getColorValue(semanticTokens.colors['border-secondary'], 'light')}`,
+              ...componentTokens.light.table.headerCell['&.table-selection-cell'],
             },
           },
           
-          // Table cell styles
           '.table-cell, .table-selection-cell': {
-            padding: `${semanticTokens.spacing['component-md']} ${semanticTokens.spacing['component-md']}`,
-            borderBottom: `1px solid ${getColorValue(semanticTokens.colors['border-secondary'], 'light')}`,
-            color: getColorValue(semanticTokens.colors['text-primary'], 'light'),
+            ...componentTokens.light.table.cell,
             
             '&.table-selection-cell': {
-              width: '48px',
-              padding: `${semanticTokens.spacing['component-md']} ${semanticTokens.spacing['component-sm']}`,
-              backgroundColor: 'inherit',
-              borderBottom: `1px solid ${getColorValue(semanticTokens.colors['border-secondary'], 'light')}`,
-              textAlign: 'center',
+              ...componentTokens.light.table.cell['&.table-selection-cell'],
             },
           },
           
-          // Table row styles
           '.table-row': {
-            transition: 'background-color 0.2s ease-in-out',
+            ...componentTokens.light.table.row,
             
             '&.selected': {
-              backgroundColor: `${getColorValue(semanticTokens.colors['interactive-tertiary'], 'light')}15`,
-              
-              '.table-selection-cell': {
-                backgroundColor: 'inherit',
-                borderBottom: `1px solid ${getColorValue(semanticTokens.colors['border-secondary'], 'light')}`,
-              },
+              ...componentTokens.light.table.row['&.selected'],
             },
             
             '&:hover': {
-              backgroundColor: getColorValue(semanticTokens.colors['background-hover'], 'light'),
-              
-              '.table-selection-cell': {
-                backgroundColor: 'inherit',
-              },
+              ...componentTokens.light.table.row['&:hover'],
             },
           },
         },
 
         '.table-empty': {
-          padding: `${semanticTokens.spacing['component-lg']}`,
-          textAlign: 'center',
-          color: getColorValue(semanticTokens.colors['text-tertiary'], 'light'),
-          fontSize: semanticTokens.typography['paragraph-sm'].fontSize,
-        },
-
-        '.table-striped .table-row:nth-child(even)': {
-          backgroundColor: getColorValue(semanticTokens.colors['background-secondary'], 'light'),
-        },
-
-        '.table-hoverable .table-row:hover': {
-          backgroundColor: getColorValue(semanticTokens.colors['background-hover'], 'light'),
-          cursor: 'pointer',
-        },
-
-        '.table-compact .table-header-cell, .table-compact .table-cell': {
-          padding: `${semanticTokens.spacing['component-sm']} ${semanticTokens.spacing['component-sm']}`,
+          ...componentTokens.light.table.empty,
         },
 
         '.table-loading-overlay': {
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          backgroundColor: 'rgba(255, 255, 255, 0.7)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
+          ...componentTokens.light.table.loadingOverlay,
         },
 
         '.table-loading-spinner': {
-          width: '2rem',
-          height: '2rem',
-          borderRadius: '50%',
-          border: `3px solid ${getColorValue(semanticTokens.colors['interactive-primary'], 'light')}`,
-          borderTopColor: 'transparent',
-          animation: 'spin 1s linear infinite',
+          ...componentTokens.light.table.loadingSpinner,
         },
 
+        '.table-header-content': {
+          ...componentTokens.light.table.headerContent,
+        },
+
+        '.sort-icon': {
+          ...componentTokens.light.table.sortIcon,
+          
+          '&.active': {
+            ...componentTokens.light.table.sortIcon['&.active'],
+          },
+        },
+
+        '.sort-icon-default': {
+          ...componentTokens.light.table.sortIconDefault,
+        },
+
+        '.table-load-more': {
+          ...componentTokens.light.table.loadMore,
+        },
+
+        '.table-loading-spinner-sm': {
+          ...componentTokens.light.table.loadingSpinnerSm,
+        },
+
+        '.filter-button': {
+          ...componentTokens.light.table.filterButton,
+          '&:hover': {
+            ...componentTokens.light.table.filterButton['&:hover'],
+          },
+          '&.active': {
+            ...componentTokens.light.table.filterButton['&.active'],
+          },
+        },
+
+        '.filter-dropdown': {
+          ...componentTokens.light.table.filterDropdown,
+        },
+
+        '.filter-dropdown-header': {
+          ...componentTokens.light.table.filterDropdownHeader,
+        },
+
+        '.filter-dropdown-title': {
+          ...componentTokens.light.table.filterDropdownTitle,
+        },
+
+        '.filter-clear-button': {
+          ...componentTokens.light.table.filterClearButton,
+          '&:hover': {
+            ...componentTokens.light.table.filterClearButton['&:hover'],
+          },
+        },
+
+        '.filter-dropdown-content': {
+          ...componentTokens.light.table.filterDropdownContent,
+        },
+
+        '.filter-option': {
+          ...componentTokens.light.table.filterOption,
+          '&:hover': {
+            ...componentTokens.light.table.filterOption['&:hover'],
+          },
+        },
+
+        '.table-header-actions': {
+          ...componentTokens.light.table.headerActions,
+        },
+        
+        // Table variants
+        '.table-bordered': {
+          ...componentTokens.light.table.variants.bordered,
+        },
+        
+        '.table-striped .table-row:nth-child(even)': {
+          ...componentTokens.light.table.variants.striped['.table-row:nth-child(even)'],
+        },
+        
+        '.table-hoverable .table-row:hover': {
+          ...componentTokens.light.table.variants.hoverable['.table-row:hover'],
+        },
+        
+        // Table sizes
+        '.table-compact .table-header-cell, .table-compact .table-cell': {
+          ...componentTokens.light.table.sizes.compact.headerCell,
+        },
+        
         // Cell alignment classes
         '.text-center': {
           textAlign: 'center',
         },
         '.text-right': {
           textAlign: 'right',
-        },
-
-        // In the light mode styles section
-        '.table-header-cell.sortable': {
-          cursor: 'pointer',
-          userSelect: 'none',
-          '&:hover': {
-            backgroundColor: getColorValue(semanticTokens.colors['background-hover'], 'light'),
-          },
-        },
-
-        '.table-header-content': {
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-        },
-
-        '.table-sort-icons': {
-          display: 'flex',
-          flexDirection: 'column',
-          marginLeft: '4px',
-          height: '14px',
-        },
-
-        '.sort-icon': {
-          color: getColorValue(semanticTokens.colors['text-tertiary'], 'light'),
-          transition: 'color 0.2s ease-in-out',
-          
-          '&.active': {
-            color: getColorValue(semanticTokens.colors['interactive-primary'], 'light'),
-          },
-        },
-
-        '.sort-icon-default': {
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          height: '14px',
-        },
-
-        '.table-load-more': {
-          display: 'flex',
-          justifyContent: 'center',
-          padding: semanticTokens.spacing['component-md'],
-          borderTop: `1px solid ${getColorValue(semanticTokens.colors['border-secondary'], 'light')}`,
-        },
-
-        '.table-loading-spinner-sm': {
-          width: '1rem',
-          height: '1rem',
-          borderRadius: '50%',
-          border: `2px solid ${getColorValue(semanticTokens.colors['interactive-primary'], 'light')}`,
-          borderTopColor: 'transparent',
-          animation: 'spin 1s linear infinite',
-        },
-
-        '.filter-button': {
-          padding: semanticTokens.spacing['component-xs'],
-          borderRadius: semanticTokens.borderRadius['radius-sm'],
-          cursor: 'pointer',
-          display: 'inline-flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          color: getColorValue(semanticTokens.colors['text-tertiary'], 'light'),
-          '&:hover': {
-            backgroundColor: getColorValue(semanticTokens.colors['background-hover'], 'light'),
-          },
-          '&.active': {
-            color: getColorValue(semanticTokens.colors['interactive-primary'], 'light'),
-          },
-        },
-
-        '.filter-dropdown': {
-          position: 'absolute',
-          top: '100%',
-          right: 0,
-          marginTop: semanticTokens.spacing['component-xs'],
-          backgroundColor: getColorValue(semanticTokens.colors['background-primary'], 'light'),
-          border: `1px solid ${getColorValue(semanticTokens.colors['border-primary'], 'light')}`,
-          borderRadius: semanticTokens.borderRadius['radius-sm'],
-          boxShadow: semanticTokens.shadows['shadow-lg'],
-          minWidth: '200px',
-          zIndex: 50,
-        },
-
-        '.filter-dropdown-header': {
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          padding: semanticTokens.spacing['component-sm'],
-          borderBottom: `1px solid ${getColorValue(semanticTokens.colors['border-primary'], 'light')}`,
-        },
-
-        '.filter-dropdown-title': {
-          fontSize: semanticTokens.typography['paragraph-sm'].fontSize,
-          fontWeight: semanticTokens.typography['paragraph-sm-medium'].fontWeight,
-          color: getColorValue(semanticTokens.colors['text-primary'], 'light'),
-        },
-
-        '.filter-clear-button': {
-          display: 'inline-flex',
-          alignItems: 'center',
-          gap: semanticTokens.spacing['component-xs'],
-          fontSize: semanticTokens.typography['paragraph-sm'].fontSize,
-          color: getColorValue(semanticTokens.colors['text-tertiary'], 'light'),
-          '&:hover': {
-            color: getColorValue(semanticTokens.colors['text-primary'], 'light'),
-          },
-        },
-
-        '.filter-dropdown-content': {
-          maxHeight: '200px',
-          overflowY: 'auto',
-          padding: semanticTokens.spacing['component-xs'],
-          position: 'relative',
-          zIndex: 51,
-        },
-
-        '.filter-option': {
-          padding: semanticTokens.spacing['component-xs'],
-          cursor: 'pointer',
-          '&:hover': {
-            backgroundColor: getColorValue(semanticTokens.colors['background-hover'], 'light'),
-          },
-          width: '100%',
-        },
-
-        '.filter-option-text': {
-          // Remove this class since we're using the Checkbox component's label
-        },
-
-        '.table-header-actions': {
-          display: 'flex',
-          alignItems: 'center',
-          gap: semanticTokens.spacing['component-xs'],
-        },
-
-        '.table-selection-cell': {
-          width: '40px',
-          padding: `${semanticTokens.spacing['component-sm']} ${semanticTokens.spacing['component-sm']}`,
-          textAlign: 'center',
-        },
-
-        '.table-row': {
-          '&.selected': {
-            backgroundColor: `${getColorValue(semanticTokens.colors['interactive-tertiary'], 'light')}20`,
-          },
         },
       });
 
@@ -1204,25 +1135,82 @@ module.exports = {
         '.dark': {
           '.table': {
             'thead': {
-              backgroundColor: getColorValue(semanticTokens.colors['background-secondary'], 'dark'),
+              ...componentTokens.dark.table.header,
             },
             '.table-header-cell': {
-              color: getColorValue(semanticTokens.colors['text-primary'], 'dark'),
-              borderBottom: `1px solid ${getColorValue(semanticTokens.colors['border-secondary'], 'dark')}`,
+              ...componentTokens.dark.table.headerCell,
               
               '&.table-selection-cell': {
-                borderBottom: `1px solid ${getColorValue(semanticTokens.colors['border-secondary'], 'dark')}`,
+                ...componentTokens.dark.table.headerCell['&.table-selection-cell'],
               },
             },
             '.table-cell, .table-selection-cell': {
-              color: getColorValue(semanticTokens.colors['text-primary'], 'dark'),
-              borderBottom: `1px solid ${getColorValue(semanticTokens.colors['border-secondary'], 'dark')}`,
+              ...componentTokens.dark.table.cell,
               
               '&.table-selection-cell': {
-                borderBottom: `1px solid ${getColorValue(semanticTokens.colors['border-secondary'], 'dark')}`,
-                textAlign: 'center',
+                ...componentTokens.dark.table.cell['&.table-selection-cell'],
               },
             },
+            '.table-row': {
+              ...componentTokens.dark.table.row,
+              
+              '&.selected': {
+                ...componentTokens.dark.table.row['&.selected'],
+              },
+              
+              '&:hover': {
+                ...componentTokens.dark.table.row['&:hover'],
+              },
+            },
+          },
+          '.table-empty': {
+            ...componentTokens.dark.table.empty,
+          },
+          '.table-loading-overlay': {
+            ...componentTokens.dark.table.loadingOverlay,
+          },
+          '.table-loading-spinner': {
+            ...componentTokens.dark.table.loadingSpinner,
+          },
+          '.table-loading-spinner-sm': {
+            ...componentTokens.dark.table.loadingSpinnerSm,
+          },
+          '.sort-icon': {
+            ...componentTokens.dark.table.sortIcon,
+            
+            '&.active': {
+              ...componentTokens.dark.table.sortIcon['&.active'],
+            },
+          },
+          '.filter-button': {
+            ...componentTokens.dark.table.filterButton,
+            '&:hover': {
+              ...componentTokens.dark.table.filterButton['&:hover'],
+            },
+            '&.active': {
+              ...componentTokens.dark.table.filterButton['&.active'],
+            },
+          },
+          '.filter-dropdown': {
+            ...componentTokens.dark.table.filterDropdown,
+          },
+          '.filter-dropdown-title': {
+            ...componentTokens.dark.table.filterDropdownTitle,
+          },
+          '.filter-clear-button': {
+            ...componentTokens.dark.table.filterClearButton,
+            '&:hover': {
+              ...componentTokens.dark.table.filterClearButton['&:hover'],
+            },
+          },
+          '.table-bordered': {
+            ...componentTokens.dark.table.variants.bordered,
+          },
+          '.table-striped .table-row:nth-child(even)': {
+            ...componentTokens.dark.table.variants.striped['.table-row:nth-child(even)'],
+          },
+          '.table-hoverable .table-row:hover': {
+            ...componentTokens.dark.table.variants.hoverable['.table-row:hover'],
           },
         },
       });
