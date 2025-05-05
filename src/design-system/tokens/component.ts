@@ -1224,6 +1224,114 @@ const getComponentTokens = (mode: ThemeMode) => ({
       },
     },
   },
+
+  alert: {
+    base: {
+      position: 'relative',
+      display: 'flex',
+      borderRadius: semanticTokens.borderRadius['radius-md'],
+      overflow: 'hidden',
+      padding: `${semanticTokens.spacing['component-md']} ${semanticTokens.spacing['component-lg']}`,
+      width: '100%',
+    },
+    icon: {
+      display: 'flex',
+      alignItems: 'flex-start',
+      marginRight: semanticTokens.spacing['component-md'],
+      fontSize: semanticTokens.typography['paragraph-base'].fontSize,
+      flexShrink: 0,
+    },
+    content: {
+      flex: '1 1 auto',
+    },
+    title: {
+      fontWeight: semanticTokens.typography['paragraph-base-semibold'].fontWeight,
+      color: 'inherit',
+      marginBottom: semanticTokens.spacing['component-xs'],
+      fontSize: semanticTokens.typography['paragraph-base'].fontSize,
+      lineHeight: semanticTokens.typography['paragraph-base'].lineHeight,
+    },
+    description: {
+      fontSize: semanticTokens.typography['paragraph-sm'].fontSize,
+      lineHeight: semanticTokens.typography['paragraph-sm'].lineHeight,
+      color: 'inherit',
+      opacity: 0.9,
+    },
+    close: {
+      position: 'absolute',
+      top: semanticTokens.spacing['component-md'],
+      right: semanticTokens.spacing['component-md'],
+      padding: semanticTokens.spacing['component-xs'],
+      cursor: 'pointer',
+      color: 'inherit',
+      opacity: 0.65,
+      borderRadius: semanticTokens.borderRadius['radius-sm'],
+      transition: 'all 0.2s ease-in-out',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: 'transparent',
+      border: 'none',
+      '&:hover': {
+        opacity: 0.9,
+        backgroundColor: 'rgba(0, 0, 0, 0.05)',
+      },
+    },
+    variants: {
+      info: {
+        backgroundColor: getColorValue(semanticTokens.colors['utility-blue-50'], mode),
+        color: getColorValue(semanticTokens.colors['utility-blue-700'], mode),
+        borderLeft: `4px solid ${getColorValue(semanticTokens.colors['utility-blue-500'], mode)}`,
+      },
+      success: {
+        backgroundColor: getColorValue(semanticTokens.colors['utility-green-50'], mode),
+        color: getColorValue(semanticTokens.colors['utility-green-700'], mode),
+        borderLeft: `4px solid ${getColorValue(semanticTokens.colors['utility-green-500'], mode)}`,
+      },
+      warning: {
+        backgroundColor: getColorValue(semanticTokens.colors['utility-orange-50'], mode),
+        color: getColorValue(semanticTokens.colors['utility-orange-700'], mode),
+        borderLeft: `4px solid ${getColorValue(semanticTokens.colors['utility-orange-500'], mode)}`,
+      },
+      error: {
+        backgroundColor: getColorValue(semanticTokens.colors['utility-error-50'], mode),
+        color: getColorValue(semanticTokens.colors['utility-error-700'], mode),
+        borderLeft: `4px solid ${getColorValue(semanticTokens.colors['utility-error-500'], mode)}`,
+      },
+      neutral: {
+        backgroundColor: getColorValue(semanticTokens.colors['background-secondary'], mode),
+        color: getColorValue(semanticTokens.colors['text-primary'], mode),
+        borderLeft: `4px solid ${getColorValue(semanticTokens.colors['border-primary'], mode)}`,
+      },
+    },
+    sizes: {
+      sm: {
+        padding: `${semanticTokens.spacing['component-sm']} ${semanticTokens.spacing['component-md']}`,
+        '.alert-title': {
+          fontSize: semanticTokens.typography['paragraph-sm'].fontSize,
+          lineHeight: semanticTokens.typography['paragraph-sm'].lineHeight,
+        },
+        '.alert-description': {
+          fontSize: semanticTokens.typography['paragraph-xs'].fontSize,
+          lineHeight: semanticTokens.typography['paragraph-xs'].lineHeight,
+        },
+      },
+      md: {
+        padding: `${semanticTokens.spacing['component-md']} ${semanticTokens.spacing['component-lg']}`,
+      },
+      lg: {
+        padding: `${semanticTokens.spacing['component-lg']} ${semanticTokens.spacing['component-xl']}`,
+        '.alert-title': {
+          fontSize: semanticTokens.typography['paragraph-lg'].fontSize,
+          lineHeight: semanticTokens.typography['paragraph-lg'].lineHeight,
+        },
+        '.alert-description': {
+          fontSize: semanticTokens.typography['paragraph-base'].fontSize,
+          lineHeight: semanticTokens.typography['paragraph-base'].lineHeight,
+        },
+      },
+    },
+  },
 });
 
 export const componentTokens = {

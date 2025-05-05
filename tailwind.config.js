@@ -616,6 +616,23 @@ module.exports = {
             color: getColorValue(semanticTokens.colors['accent-sky'], 'light'),
           },
         },
+        // Alert styles
+        '.alert': {
+          ...componentTokens.light.alert.base,
+          '&.alert-info': componentTokens.light.alert.variants.info,
+          '&.alert-success': componentTokens.light.alert.variants.success,
+          '&.alert-warning': componentTokens.light.alert.variants.warning,
+          '&.alert-error': componentTokens.light.alert.variants.error,
+          '&.alert-neutral': componentTokens.light.alert.variants.neutral,
+          '&.alert-sm': componentTokens.light.alert.sizes.sm,
+          '&.alert-md': componentTokens.light.alert.sizes.md,
+          '&.alert-lg': componentTokens.light.alert.sizes.lg,
+        },
+        '.alert-icon': componentTokens.light.alert.icon,
+        '.alert-content': componentTokens.light.alert.content,
+        '.alert-title': componentTokens.light.alert.title,
+        '.alert-description': componentTokens.light.alert.description,
+        '.alert-close': componentTokens.light.alert.close,
       });
 
       // Add dark mode variants
@@ -1039,6 +1056,23 @@ module.exports = {
           '.drawer-footer': {
             ...componentTokens.dark.drawer.footer,
           },
+          // Alert styles for dark mode
+          '.alert': {
+            ...componentTokens.dark.alert.base,
+            '&.alert-info': componentTokens.dark.alert.variants.info,
+            '&.alert-success': componentTokens.dark.alert.variants.success,
+            '&.alert-warning': componentTokens.dark.alert.variants.warning,
+            '&.alert-error': componentTokens.dark.alert.variants.error,
+            '&.alert-neutral': componentTokens.dark.alert.variants.neutral,
+            '&.alert-sm': componentTokens.dark.alert.sizes.sm,
+            '&.alert-md': componentTokens.dark.alert.sizes.md,
+            '&.alert-lg': componentTokens.dark.alert.sizes.lg,
+          },
+          '.alert-icon': componentTokens.dark.alert.icon,
+          '.alert-content': componentTokens.dark.alert.content,
+          '.alert-title': componentTokens.dark.alert.title,
+          '.alert-description': componentTokens.dark.alert.description,
+          '.alert-close': componentTokens.dark.alert.close,
         }
       });
 
