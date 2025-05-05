@@ -21,6 +21,8 @@ import { AccordionDemo } from './pages/AccordionDemo';
 import { DrawerDemo } from './pages/DrawerDemo';
 import { IntroductionDemo } from './pages/IntroductionDemo';
 import { AlertDemo } from './pages/AlertDemo';
+import { ColorsDemo } from './pages/ColorsDemo';
+import { SpacingDemo } from './pages/SpacingDemo';
 import { Clock, ArrowClockwise, Pause, Plus } from '@phosphor-icons/react';
 import { Button } from './components/Button';
 import { demoGroups, DemoStatus } from './components/Sidebar';
@@ -190,6 +192,10 @@ function App() {
         return <DrawerDemo />;
       case 'alert':
         return <AlertDemo />;
+      case 'colors':
+        return <ColorsDemo />;
+      case 'spacing':
+        return <SpacingDemo />;
       default:
         return <div>Demo not found</div>;
     }

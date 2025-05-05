@@ -23,9 +23,16 @@ export const demoGroups: DemoGroup[] = [
     ]
   },
   {
+    label: "Foundations",
+    items: [
+      { id: 'typography', label: 'Typography', status: 'in-progress' },
+      { id: 'colors', label: 'Colors', status: 'not-started' },
+      { id: 'spacing', label: 'Spacing', status: 'not-started' },
+    ]
+  },
+  {
     label: "Layout",
     items: [
-      { id: 'layout', label: 'Layout', status: 'in-progress' },
       { id: 'bento-box', label: 'Bento Box', status: 'in-progress' },
     ]
   },
@@ -34,7 +41,6 @@ export const demoGroups: DemoGroup[] = [
     items: [
       { id: 'button', label: 'Button', status: 'in-progress' },
       { id: 'button-group', label: 'Button Group', status: 'in-progress' },
-      { id: 'typography', label: 'Typography', status: 'in-progress' },
       { id: 'badge', label: 'Badge', status: 'in-progress' },
       { id: 'tag', label: 'Tag', status: 'in-progress' },
       { id: 'checkbox', label: 'Checkbox', status: 'in-progress' },
