@@ -19,6 +19,7 @@ import { ButtonGroupDemo } from './pages/ButtonGroupDemo';
 import { BentoBoxDemo } from './pages/BentoBoxDemo';
 import { AccordionDemo } from './pages/AccordionDemo';
 import { DrawerDemo } from './pages/DrawerDemo';
+import { IntroductionDemo } from './pages/IntroductionDemo';
 
 function App() {
   const [activeDemo, setActiveDemo] = useState('overview');
@@ -26,7 +27,7 @@ function App() {
   const renderDemo = () => {
     switch (activeDemo) {
       case 'overview':
-        return <div className="p-8">Welcome to Aurora Design System</div>;
+        return <IntroductionDemo />;
       case 'badge':
         return <BadgeDemo />;
       case 'button':
