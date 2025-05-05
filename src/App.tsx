@@ -139,7 +139,8 @@ function App() {
     
     // For components that have placeholders
     const inDevelopmentComponents = [
-      'toast', 'progress', 'skeleton', 'calendar', 'slider', 'file-upload'
+      'toast', 'progress', 'skeleton', 'calendar', 'slider', 'file-upload',
+      'accordion'
     ];
     
     // Show empty state for not started components
@@ -185,8 +186,6 @@ function App() {
         return <ButtonGroupDemo />;
       case 'bento-box':
         return <BentoBoxDemo />;
-      case 'accordion':
-        return <AccordionDemo />;
       case 'drawer':
         return <DrawerDemo />;
       case 'alert':
