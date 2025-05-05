@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Alert } from '../components/Alert';
 import { Tabs } from '../components/Tabs';
 import { Button } from '../components/Button';
+import ScrollContainer from '../components/ScrollContainer';
 
 export const AlertDemo = () => {
   const [showDismissibleAlert, setShowDismissibleAlert] = useState(true);
@@ -63,8 +64,9 @@ export const AlertDemo = () => {
 
             <div className="bg-background-secondary p-4 rounded-md">
               <h3 className="text-heading-sm text-text-primary mb-2">Code Example</h3>
-              <pre className="bg-background-tertiary p-4 rounded-md overflow-x-auto">
-                <code>
+              <ScrollContainer maxHeight="200px">
+                <pre className="bg-background-tertiary p-4 rounded-md overflow-x-auto">
+                  <code>
 {`import { Alert } from 'aurora-design-system';
 
 // Basic Alert
@@ -74,8 +76,9 @@ export const AlertDemo = () => {
 <Alert title="Alert with Title">
   This is an alert with a title that provides more context.
 </Alert>`}
-                </code>
-              </pre>
+                  </code>
+                </pre>
+              </ScrollContainer>
             </div>
           </div>
         )}
@@ -108,8 +111,9 @@ export const AlertDemo = () => {
 
             <div className="bg-background-secondary p-4 rounded-md">
               <h3 className="text-heading-sm text-text-primary mb-2">Code Example</h3>
-              <pre className="bg-background-tertiary p-4 rounded-md overflow-x-auto">
-                <code>
+              <ScrollContainer maxHeight="200px">
+                <pre className="bg-background-tertiary p-4 rounded-md overflow-x-auto">
+                  <code>
 {`import { Alert } from 'aurora-design-system';
 
 <Alert variant="info" title="Info">
@@ -131,8 +135,9 @@ export const AlertDemo = () => {
 <Alert variant="neutral" title="Neutral">
   This is a neutral alert.
 </Alert>`}
-                </code>
-              </pre>
+                  </code>
+                </pre>
+              </ScrollContainer>
             </div>
           </div>
         )}
@@ -159,8 +164,9 @@ export const AlertDemo = () => {
 
             <div className="bg-background-secondary p-4 rounded-md">
               <h3 className="text-heading-sm text-text-primary mb-2">Code Example</h3>
-              <pre className="bg-background-tertiary p-4 rounded-md overflow-x-auto">
-                <code>
+              <ScrollContainer maxHeight="200px">
+                <pre className="bg-background-tertiary p-4 rounded-md overflow-x-auto">
+                  <code>
 {`import { Alert } from 'aurora-design-system';
 
 <Alert size="sm" title="Small Alert">
@@ -174,8 +180,9 @@ export const AlertDemo = () => {
 <Alert size="lg" title="Large Alert">
   This is a large alert.
 </Alert>`}
-                </code>
-              </pre>
+                  </code>
+                </pre>
+              </ScrollContainer>
             </div>
           </div>
         )}
@@ -217,8 +224,9 @@ export const AlertDemo = () => {
 
             <div className="bg-background-secondary p-4 rounded-md">
               <h3 className="text-heading-sm text-text-primary mb-2">Props Reference</h3>
-              <pre className="bg-background-tertiary p-4 rounded-md overflow-x-auto">
-                <code>
+              <ScrollContainer maxHeight="300px">
+                <pre className="bg-background-tertiary p-4 rounded-md overflow-x-auto">
+                  <code>
 {`interface AlertProps {
   // Alert variant
   variant?: 'info' | 'success' | 'warning' | 'error' | 'neutral';
@@ -247,8 +255,9 @@ export const AlertDemo = () => {
   // Additional CSS class
   className?: string;
 }`}
-                </code>
-              </pre>
+                  </code>
+                </pre>
+              </ScrollContainer>
             </div>
           </div>
         )}

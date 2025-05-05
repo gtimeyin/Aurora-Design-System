@@ -1,0 +1,100 @@
+/* Custom Scrollbar Styles for Aurora Design System */
+
+/* For Webkit browsers (Chrome, Safari, newer versions of Opera) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background-secondary, #f1f1f1);
+  background-color: rgba(var(--color-background-secondary-rgb, 245, 245, 245), 0.05);
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-primary, #cccccc);
+  background-color: rgba(var(--color-border-primary-rgb, 209, 213, 219), 0.05);
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover,
+::-webkit-scrollbar-thumb:active {
+  background-color: rgba(var(--color-border-tertiary-rgb, 156, 163, 175), 0.4);
+}
+
+/* When container is hovered or being scrolled */
+.custom-scrollbar:hover::-webkit-scrollbar-thumb,
+.custom-scrollbar:focus::-webkit-scrollbar-thumb,
+.custom-scrollbar:active::-webkit-scrollbar-thumb {
+  background-color: rgba(var(--color-border-primary-rgb, 209, 213, 219), 0.4);
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(var(--color-border-primary-rgb, 209, 213, 219), 0.05) rgba(var(--color-background-secondary-rgb, 245, 245, 245), 0.05);
+}
+
+/* When container is hovered or being scrolled */
+.custom-scrollbar:hover,
+.custom-scrollbar:focus,
+.custom-scrollbar:active {
+  scrollbar-color: rgba(var(--color-border-primary-rgb, 209, 213, 219), 0.4) rgba(var(--color-background-secondary-rgb, 245, 245, 245), 0.05);
+}
+
+/* Dark mode adjustments */
+.dark ::-webkit-scrollbar-track {
+  background: var(--color-background-tertiary, #2d2d2d);
+  background-color: rgba(var(--color-background-tertiary-rgb, 17, 24, 39), 0.05);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: var(--color-border-secondary, #444444);
+  background-color: rgba(var(--color-border-secondary-rgb, 55, 65, 81), 0.05);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover,
+.dark ::-webkit-scrollbar-thumb:active {
+  background-color: rgba(var(--color-border-primary-rgb, 75, 85, 99), 0.4);
+}
+
+/* When container is hovered or being scrolled in dark mode */
+.dark .custom-scrollbar:hover::-webkit-scrollbar-thumb,
+.dark .custom-scrollbar:focus::-webkit-scrollbar-thumb,
+.dark .custom-scrollbar:active::-webkit-scrollbar-thumb {
+  background-color: rgba(var(--color-border-secondary-rgb, 55, 65, 81), 0.4);
+}
+
+.dark * {
+  scrollbar-color: rgba(var(--color-border-secondary-rgb, 55, 65, 81), 0.05) rgba(var(--color-background-tertiary-rgb, 17, 24, 39), 0.05);
+}
+
+.dark .custom-scrollbar:hover,
+.dark .custom-scrollbar:focus,
+.dark .custom-scrollbar:active {
+  scrollbar-color: rgba(var(--color-border-secondary-rgb, 55, 65, 81), 0.4) rgba(var(--color-background-tertiary-rgb, 17, 24, 39), 0.05);
+}
+
+/* Apply scrollbar to specific containers */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(var(--color-border-primary-rgb, 209, 213, 219), 0.05) rgba(var(--color-background-secondary-rgb, 245, 245, 245), 0.05);
+  transition: scrollbar-color 0.3s ease;
+}
+
+.dark .custom-scrollbar {
+  scrollbar-color: rgba(var(--color-border-secondary-rgb, 55, 65, 81), 0.05) rgba(var(--color-background-tertiary-rgb, 17, 24, 39), 0.05);
+  transition: scrollbar-color 0.3s ease;
+}
+
+/* Scrollbar animation class to be added via JavaScript on scroll */
+.scrolling::-webkit-scrollbar-thumb {
+  background-color: rgba(var(--color-border-primary-rgb, 209, 213, 219), 0.4) !important;
+}
+
+.dark .scrolling::-webkit-scrollbar-thumb {
+  background-color: rgba(var(--color-border-secondary-rgb, 55, 65, 81), 0.4) !important;
+} 

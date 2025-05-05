@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import './design-system/scrollbar.css';
 
 @layer base {
   body {
@@ -23,10 +24,32 @@
 :root {
   /* Keep only what's not defined in our design system */
   --radius: 0.5rem;
+  
+  /* CSS Variables for scrollbar colors - light mode */
+  --color-background-secondary: #f5f5f5;
+  --color-background-secondary-rgb: 245, 245, 245;
+  --color-background-tertiary: #ebebeb;
+  --color-background-tertiary-rgb: 235, 235, 235;
+  --color-border-primary: #d1d5db;
+  --color-border-primary-rgb: 209, 213, 219;
+  --color-border-secondary: #e5e7eb;
+  --color-border-secondary-rgb: 229, 231, 235;
+  --color-border-tertiary: #9ca3af;
+  --color-border-tertiary-rgb: 156, 163, 175;
 }
  
 .dark {
   /* Dark mode specific overrides if needed */
+  --color-background-secondary: #1f2937;
+  --color-background-secondary-rgb: 31, 41, 55;
+  --color-background-tertiary: #111827;
+  --color-background-tertiary-rgb: 17, 24, 39;
+  --color-border-primary: #4b5563;
+  --color-border-primary-rgb: 75, 85, 99;
+  --color-border-secondary: #374151;
+  --color-border-secondary-rgb: 55, 65, 81;
+  --color-border-tertiary: #6b7280;
+  --color-border-tertiary-rgb: 107, 114, 128;
 }
 
 @layer utilities {

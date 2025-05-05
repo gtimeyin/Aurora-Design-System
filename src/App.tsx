@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ButtonDemo } from './pages/ButtonDemo';
 import { TypographyDemo } from './pages/TypographyDemo';
 import { BadgeDemo } from './pages/BadgeDemo';
@@ -24,6 +24,7 @@ import { AlertDemo } from './pages/AlertDemo';
 import { Clock, ArrowClockwise, Pause, Plus } from '@phosphor-icons/react';
 import { Button } from './components/Button';
 import { demoGroups, DemoStatus } from './components/Sidebar';
+import { initScrollbarBehavior } from './design-system/utils/scrollbar';
 
 // Component for rendering placeholder for components in development
 const ComponentPlaceholder = ({ id, status }: { id: string; status: string }) => {
@@ -106,6 +107,11 @@ const ComponentPlaceholder = ({ id, status }: { id: string; status: string }) =>
 
 function App() {
   const [activeDemo, setActiveDemo] = useState('overview');
+
+  // Initialize scrollbar behavior on mount
+  useEffect(() => {
+    initScrollbarBehavior();
+  }, []);
 
   // Get component status from sidebar definition
   const getComponentStatus = (id: string): DemoStatus => {
@@ -199,7 +205,7 @@ function App() {
             <h1 className="text-heading-md text-text-secondary font-medium">Aurora Design System</h1>
             <DarkModeSwitcher />
           </nav>
-          <div className="p-8 bg-background-primary border border-border-secondary rounded-radius-xl p-8 w-full h-full overflow-y-auto">
+          <div className="p-8 bg-background-primary border border-border-secondary rounded-radius-xl p-8 w-full h-full overflow-y-auto custom-scrollbar">
             <main>
               {renderDemo()}
             </main>

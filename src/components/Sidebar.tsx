@@ -165,7 +165,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeDemo, onDemoChange }) =>
   };
 
   return (
-    <nav className="w-64 h-screen bg-background-secondary p-4 fixed left-0 top-0 overflow-y-auto">
+    <nav className="w-64 h-screen bg-background-secondary p-4 fixed left-0 top-0 overflow-y-auto custom-scrollbar">
       <div className="space-y-2">
         {demoGroups.map((group, groupIndex) => (
           <div key={groupIndex} className="mb-2">
