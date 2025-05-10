@@ -171,7 +171,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeDemo, onDemoChange }) =>
   };
 
   return (
-    <nav className="w-64 h-screen bg-background-secondary p-4 fixed left-0 top-0 overflow-y-auto custom-scrollbar">
+    <nav className="w-56 h-full bg-background-secondary p-4 overflow-y-auto custom-scrollbar">
       <div className="space-y-2">
         {demoGroups.map((group, groupIndex) => (
           <div key={groupIndex} className="mb-2">
@@ -195,19 +195,19 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeDemo, onDemoChange }) =>
               expandedGroups[groupIndex] ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
             }`}>
               {group.items.map((demo) => (
-                <button
-                  key={demo.id}
-                  onClick={() => onDemoChange(demo.id)}
+          <button
+            key={demo.id}
+            onClick={() => onDemoChange(demo.id)}
                   className={`w-full text-left px-4 py-2 rounded-md transition-colors flex items-center justify-between ${
-                    activeDemo === demo.id
+              activeDemo === demo.id
                       ? 'bg-background-primary text-text-primary font-medium border border-border-tertiary shadow-elevation-1'
-                      : 'text-text-primary hover:bg-background-hover'
+                : 'text-text-primary hover:bg-background-hover'
                   } ${demo.status === 'not-started' ? 'opacity-70' : ''}`}
                   title={getStatusTooltip(demo.status)}
-                >
+          >
                   <span>{demo.label}</span>
                   {getStatusIcon(demo.status)}
-                </button>
+          </button>
               ))}
             </div>
           </div>

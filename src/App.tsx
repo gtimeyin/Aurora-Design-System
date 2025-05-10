@@ -5,7 +5,12 @@ import { BadgeDemo } from './pages/BadgeDemo';
 import { CheckboxDemo } from './pages/CheckboxDemo';
 import { LayoutDemo } from './pages/LayoutDemo';
 import { DarkModeSwitcher } from './components/DarkModeSwitcher';
+import { QuickSearch } from './components/QuickSearch';
 import { Sidebar } from './components/Sidebar';
+import { BlocksSidebar } from './components/BlocksSidebar';
+import { ChartsSidebar } from './components/ChartsSidebar';
+import { DocsSidebar } from './components/DocsSidebar';
+import { TopNavigation } from './components/TopNavigation';
 import { ThemeProvider } from './design-system/ThemeContext';
 import { TableDemo } from './pages/TableDemo';
 import { ToggleDemo } from './pages/ToggleDemo';
@@ -23,7 +28,10 @@ import { IntroductionDemo } from './pages/IntroductionDemo';
 import { AlertDemo } from './pages/AlertDemo';
 import { ColorsDemo } from './pages/ColorsDemo';
 import { SpacingDemo } from './pages/SpacingDemo';
-import { Clock, ArrowClockwise, Pause, Plus } from '@phosphor-icons/react';
+import { BlocksDemo } from './blocks/BlocksDemo';
+import { ChartsDemo } from './charts/ChartsDemo';
+import { DocsDemo } from './docs/DocsDemo';
+import { Clock, ArrowClockwise, Pause, Plus, CheckCircle } from '@phosphor-icons/react';
 import { Button } from './components/Button';
 import { demoGroups, DemoStatus } from './components/Sidebar';
 import { initScrollbarBehavior } from './design-system/utils/scrollbar';
@@ -40,6 +48,8 @@ const ComponentPlaceholder = ({ id, status }: { id: string; status: string }) =>
         return <ArrowClockwise size={24} className="text-status-warning mb-4" />;
       case 'on-hold':
         return <Pause size={24} className="text-status-error mb-4" />;
+      case 'completed':
+        return <CheckCircle size={24} className="text-status-success mb-4" />;
       default:
         return null;
     }
@@ -55,6 +65,8 @@ const ComponentPlaceholder = ({ id, status }: { id: string; status: string }) =>
         return 'In Review';
       case 'on-hold':
         return 'On Hold';
+      case 'completed':
+        return 'Completed';
       default:
         return '';
     }
@@ -108,12 +120,23 @@ const ComponentPlaceholder = ({ id, status }: { id: string; status: string }) =>
 };
 
 function App() {
+  const [activeSection, setActiveSection] = useState('base');
   const [activeDemo, setActiveDemo] = useState('overview');
+  const [activeBlock, setActiveBlock] = useState('cards');
+  const [activeChart, setActiveChart] = useState('bar-charts');
+  const [activeDoc, setActiveDoc] = useState('introduction');
+  const [searchQuery, setSearchQuery] = useState('');
 
   // Initialize scrollbar behavior on mount
   useEffect(() => {
     initScrollbarBehavior();
   }, []);
+
+  const handleSearch = (query: string) => {
+    setSearchQuery(query);
+    // Implement search functionality here
+    console.log('Searching for:', query);
+  };
 
   // Get component status from sidebar definition
   const getComponentStatus = (id: string): DemoStatus => {
@@ -130,6 +153,17 @@ function App() {
   };
 
   const renderDemo = () => {
+    // For section content
+    if (activeSection === 'blocks') {
+      return <BlocksDemo />;
+    } else if (activeSection === 'charts') {
+      return <ChartsDemo />;
+    } else if (activeSection === 'docs') {
+      return <DocsDemo />;
+    }
+    
+    // Below is for base components section
+
     // Get the current component's status
     const componentStatus = getComponentStatus(activeDemo);
     
@@ -201,19 +235,59 @@ function App() {
     }
   };
 
+  // Function to render the appropriate sidebar based on active section
+  const renderSidebar = () => {
+    switch (activeSection) {
+      case 'base':
+        return <Sidebar activeDemo={activeDemo} onDemoChange={setActiveDemo} />;
+      case 'blocks':
+        return <BlocksSidebar activeBlock={activeBlock} onBlockChange={setActiveBlock} />;
+      case 'charts':
+        return <ChartsSidebar activeChart={activeChart} onChartChange={setActiveChart} />;
+      case 'docs':
+        return <DocsSidebar activeDoc={activeDoc} onDocChange={setActiveDoc} />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <ThemeProvider>
-      <div className="min-h-screen bg-background-secondary flex">
-        <Sidebar activeDemo={activeDemo} onDemoChange={setActiveDemo} />
-        <div className="flex-1 ml-64">
-          <nav className="p-4 bg-background-secondary flex justify-between items-center">
-            <h1 className="text-heading-md text-text-secondary font-medium">Aurora Design System</h1>
-            <DarkModeSwitcher />
-          </nav>
-          <div className="p-8 bg-background-primary border border-border-secondary rounded-radius-xl p-8 w-full h-full overflow-y-auto custom-scrollbar">
-            <main>
-              {renderDemo()}
-            </main>
+      <div className="min-h-screen bg-background-secondary flex flex-col items-center">
+        {/* Top Bar */}
+        <nav className="w-full p-4 bg-background-secondary flex justify-between items-center">
+          <div className="max-w-big-screen w-full mx-auto">
+            <div className="flex justify-between items-center">
+              <h1 className="text-heading-md text-text-secondary font-medium">Aurora Design System</h1>
+              <div className="flex items-center gap-4">
+                <QuickSearch onSearch={handleSearch} placeholder="Search components, docs..." />
+                <DarkModeSwitcher />
+              </div>
+            </div>
+          </div>
+        </nav>
+        
+        {/* Top Navigation */}
+        <div className="w-full bg-background-secondary border-b border-border-secondary">
+          <div className="max-w-big-screen w-full mx-auto">
+            <TopNavigation activeSection={activeSection} onSectionChange={setActiveSection} />
+          </div>
+        </div>
+        
+        {/* Main Content Area */}
+        <div className="max-w-big-screen w-full mx-auto flex flex-1 overflow-hidden my-6">
+          {/* Sidebar for the active section */}
+          <div className="h-full mr-6">
+            {renderSidebar()}
+          </div>
+          
+          {/* Main Content */}
+          <div className="flex-1 overflow-auto">
+            <div className="bg-background-primary rounded-radius-xl p-6 h-full overflow-y-auto custom-scrollbar border border-border-tertiary">
+              <main>
+                {renderDemo()}
+              </main>
+            </div>
           </div>
         </div>
       </div>

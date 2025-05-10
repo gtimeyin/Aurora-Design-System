@@ -21,9 +21,9 @@
 }
 
 /* Remove conflicting CSS custom properties */
-:root {
+  :root {
   /* Keep only what's not defined in our design system */
-  --radius: 0.5rem;
+    --radius: 0.5rem;
   
   /* CSS Variables for scrollbar colors - light mode */
   --color-background-secondary: #f5f5f5;
@@ -61,6 +61,10 @@
   }
   .text-foreground {
     color: hsl(var(--foreground));
+  }
+  /* Custom max-width for large screens */
+  .max-w-big-screen {
+    max-width: 2560px;
   }
 }
 
